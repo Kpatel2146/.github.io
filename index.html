@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nehal Contracting Inc. | General Construction & Management</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#020617',    /* Midnight Blue (Almost Black) - The Foundation */
+                            primary: '#2563eb', /* Royal Blue - The Brand Core */
+                            accent: '#3b82f6',  /* Electric Azure - The "Pop" */
+                            silver: '#e2e8f0',  /* Subtle Silver - The Structure */
+                            text: '#1e293b',    /* Slate - High Contrast Text */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        header: ['Oswald', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.4))',
+                    },
+                    boxShadow: {
+                        'architectural': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 0 15px rgba(59, 130, 246, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        
+        .modal { transition: opacity 0.3s ease; }
+        body.modal-active { overflow: hidden; }
+
+        /* Architectural lines */
+        .arch-line { position: relative; display: inline-block; padding-bottom: 10px; }
+        .arch-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #3b82f6; 
+        }
+        
+        /* Video Background Styling */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Agency Logo Boxes */
+        .agency-logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        /* Hover effects removed for static appearance */
+        .agency-text {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #64748b;
+        }
+        
+        /* Service Detail Modal Animation */
+        #service-modal-content, #project-modal-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease-out;
+        }
+        #service-modal.active #service-modal-content, #project-modal.active #project-modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-text antialiased bg-white">
+
+    <!-- TOP BAR -->
+    <div class="bg-white text-brand-text py-2 text-xs hidden md:block border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex space-x-8 font-semibold">
+                <span class="flex items-center gap-2 hover:text-brand-accent transition cursor-pointer"><i class="ph-fill ph-phone text-brand-accent"></i> (845) 517-0711</span>
+                <span class="flex items-center gap-2 hover:text-brand-accent transition cursor-pointer"><i class="ph-fill ph-envelope-simple text-brand-accent"></i> info@nehalcontracting.com</span>
+                <span class="flex items-center gap-2 text-gray-500"><i class="ph-fill ph-clock text-brand-accent"></i> Mon - Fri: 8:00 AM - 5:00 PM</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-brand-accent transition"><i class="ph-fill ph-linkedin-logo text-lg"></i></a>
+                <a href="#" class="hover:text-brand-accent transition"><i class="ph-fill ph-facebook-logo text-lg"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-brand-dark text-white sticky top-0 z-50 shadow-2xl border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-24 items-center">
+                <!-- LOGO AREA -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <!-- REPLACE 'logo.jpg' with your actual logo file name -->
+                    <img src="logo.jpg" 
+                         alt="Nehal Contracting Inc." 
+                         class="h-16 w-auto object-contain bg-white/10 p-1 rounded"
+                         onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';"> 
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-bold tracking-wide uppercase">
+                    <a href="#home" class="hover:text-brand-accent transition-colors duration-300">Home</a>
+                    <a href="#about" class="hover:text-brand-accent transition-colors duration-300">About</a>
+                    <a href="#services" class="hover:text-brand-accent transition-colors duration-300">Services</a>
+                    <a href="#projects" class="hover:text-brand-accent transition-colors duration-300">Projects</a>
+                    <a href="#careers" class="hover:text-brand-accent transition-colors duration-300">Careers</a>
+                    <a href="#contact" class="bg-brand-accent text-white px-8 py-3 rounded hover:bg-white hover:text-brand-dark transition-all duration-300 shadow-glow">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brand-accent p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800 absolute w-full text-white shadow-2xl">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-3 hover:bg-white/10 rounded">Home</a>
+                <a href="#about" class="block px-3 py-3 hover:bg-white/10 rounded">About Us</a>
+                <a href="#services" class="block px-3 py-3 hover:bg-white/10 rounded">Services</a>
+                <a href="#projects" class="block px-3 py-3 hover:bg-white/10 rounded">Projects</a>
+                <a href="#careers" class="block px-3 py-3 hover:bg-white/10 rounded">Careers</a>
+                <a href="#contact" class="block px-3 py-3 text-brand-accent font-bold mt-4 border border-brand-accent rounded text-center">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION - WITH VIDEO BACKGROUND -->
+    <section id="home" class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-dark">
+        <!-- Video Background -->
+        <!-- REPLACE THE 'src' BELOW with your video file name (e.g., "video.mp4") -->
+        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070" class="video-background opacity-50">
+            <source src="https://videos.pexels.com/video-files/8539209/8539209-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-hero-gradient z-10"></div>
+
+        <div class="relative z-20 text-center px-4 max-w-6xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 border border-brand-accent/50 bg-brand-dark/50 backdrop-blur-md px-6 py-2 rounded-sm text-xs font-bold tracking-[0.2em] mb-6 uppercase text-brand-accent cursor-default">
+                <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span> Agency & Public Works
+            </div>
+            
+            <!-- Company Name (Main Attraction) -->
+            <h1 class="text-6xl md:text-9xl font-header font-bold text-white mb-2 leading-none tracking-tight">
+                NEHAL<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-silver to-white">CONTRACTING</span>
+            </h1>
+            
+            <!-- Tagline -->
+            <h2 class="text-xl md:text-3xl font-light text-gray-300 mb-10 tracking-wide uppercase">
+                General Construction & Management
+            </h2>
+
+            <!-- Description -->
+            <p class="text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed border-t border-gray-700 pt-8">
+                The premier partner for government agencies, educational institutions, and public infrastructure projects across the Tri-State area.
+            </p>
+            
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#contact" class="px-12 py-4 bg-brand-accent text-white font-bold rounded-sm hover:bg-white hover:text-brand-dark transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.5)] uppercase tracking-wider text-sm">
+                    Partner With Us
+                </a>
+                <a href="#projects" class="px-12 py-4 border border-white/30 bg-white/5 backdrop-blur-sm text-white font-bold rounded-sm hover:bg-white hover:text-brand-dark transition-all duration-300 uppercase tracking-wider text-sm">
+                    View Portfolio
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-gray-500">
+            <i class="ph ph-arrow-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- 1. WHO WE ARE (ABOUT) -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <div class="arch-line mb-6">
+                        <h3 class="text-brand-text font-bold uppercase tracking-widest text-xs">Who We Are</h3>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-header font-bold text-brand-dark mb-8 leading-none">
+                        CONSTRUCTING <br>EXCELLENCE.
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        Nehal Contracting Inc. is a leading general contracting firm committed to providing exceptional services for public agencies. Since 2000, we have partnered with clients to build environmentally sound and secure projects.
+                    </p>
+                    <p class="text-gray-600 mb-10 leading-relaxed">
+                        We specialize in challenging environments, from historical landmarks to active school buildings, ensuring minimal disruption while delivering maximum value.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-brand-silver flex items-center justify-center text-brand-accent">
+                                <i class="ph-fill ph-certificate text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark">MBE Certified</h4>
+                                <p class="text-xs text-gray-500 uppercase">NY State & NYC</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-brand-silver flex items-center justify-center text-brand-accent">
+                                <i class="ph-fill ph-shield-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark">Safety First</h4>
+                                <p class="text-xs text-gray-500 uppercase">OSHA Compliant</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW BUTTON TO OPEN ABOUT MODAL -->
+                    <button onclick="openAboutModal()" class="px-8 py-3 bg-brand-dark text-white font-bold rounded-sm hover:bg-brand-accent transition-all duration-300 shadow-lg flex items-center gap-2">
+                        Meet Our Leadership <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <!-- Clean Architectural Image -->
+                    <!-- REPLACE THE LINK BELOW with your team photo or office photo -->
+                    <img src="https://images.unsplash.com/photo-1541976544351-e48770f39285?q=80&w=2070" 
+                         class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural" alt="Construction Architecture">
+                    <div class="absolute -bottom-10 -left-10 bg-brand-accent p-10 hidden md:block text-white">
+                        <p class="font-header text-4xl font-bold">25+</p>
+                        <p class="text-sm uppercase tracking-widest">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. STATS BAR -->
+    <div class="bg-brand-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div data-aos="fade-up" data-aos-delay="0">
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">2000</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Established</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">130+</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Projects</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">100%</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Compliance</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">NY/NJ</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Service Area</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SERVICES (INTERACTIVE) -->
+    <section id="services" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h3 class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3">Our Capabilities</h3>
+                <h2 class="text-4xl md:text-5xl font-header font-bold text-brand-dark">COMPREHENSIVE SERVICES</h2>
+                <p class="text-gray-500 mt-4 text-sm">Click on any service below to learn more about our expertise.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div onclick="openServiceDetail('gc')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up">
+                    <i class="ph-fill ph-buildings text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">General Contracting &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        End-to-end management for new builds and major renovations. We handle logistics, labor, and execution.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="openServiceDetail('schools')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <i class="ph-fill ph-graduation-cap text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Schools & Universities &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        Specialized renovations for PS schools and universities. Tight schedules and strict safety requirements.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="openServiceDetail('gov')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <i class="ph-fill ph-bank text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Government Works &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        Expert handling of city, state, and federal projects. Historical landmarks and public infrastructure.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="openServiceDetail('reno')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+                    <i class="ph-fill ph-paint-roller text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Renovations &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        Interior fit-outs, exterior masonry, roofing, and structural reinforcement for existing buildings.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div onclick="openServiceDetail('safety')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up" data-aos-delay="400">
+                    <i class="ph-fill ph-shield-check text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Safety & Compliance &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        Safety is our #1 core value. Fully trained on OSHA standards to prevent hazards on every site.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div onclick="openServiceDetail('pm')" class="bg-white p-10 shadow-sm hover:shadow-architectural transition-all duration-300 group border-b-4 border-transparent hover:border-brand-accent h-full cursor-pointer" data-aos="fade-up" data-aos-delay="500">
+                    <i class="ph-fill ph-users-three text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Project Management &rarr;</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">
+                        Advanced planning to keep projects on time and within budget through transparent communication.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. AGENCY PARTNERS -->
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-gray-400 font-bold uppercase tracking-widest text-xs">Our Clients</h3>
+                <h2 class="text-3xl md:text-4xl font-header font-bold text-brand-dark mt-2">TRUSTED AGENCY PARTNERS</h2>
+            </div>
+            
+            <!-- Updated Grid for 8 Logos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- NYCSCA -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="0">
+                    <img src="client-nycsca.png" alt="NYCSCA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">NYCSCA</span>
+                </div>
+                
+                <!-- DDC -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="50">
+                    <img src="client-ddc.png" alt="NYC DDC" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">DDC</span>
+                </div>
+                
+                <!-- MTA -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="100">
+                    <img src="client-mta.png" alt="MTA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">MTA</span>
+                </div>
+                
+                <!-- DASNY -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="150">
+                    <img src="client-dasny.png" alt="DASNY" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">DASNY</span>
+                </div>
+                
+                <!-- LiRo -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="200">
+                    <img src="client-liro.png" alt="LiRo Group" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">LiRo</span>
+                </div>
+                
+                <!-- NYCHA -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="250">
+                    <img src="client-nycha.png" alt="NYCHA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">NYCHA</span>
+                </div>
+
+                <!-- TDX Construction (New) -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="300">
+                    <img src="client-tdx.png" alt="TDX Construction" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">TDX</span>
+                </div>
+
+                <!-- Skanska (New) -->
+                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="350">
+                    <img src="client-skanska.png" alt="Skanska" class="h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="agency-text hidden">SKANSKA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PORTFOLIO (DATA DRIVEN) -->
+    <section id="projects" class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div data-aos="fade-right">
+                    <div class="arch-line mb-4">
+                        <h3 class="text-brand-accent font-bold uppercase tracking-widest text-xs">Our Work</h3>
+                    </div>
+                    <h2 class="text-4xl font-header font-bold">FEATURED PROJECTS</h2>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" data-aos="fade-left">
+                    <button class="filter-btn active px-6 py-2 bg-brand-accent text-white font-bold text-sm hover:bg-white hover:text-brand-dark transition" onclick="renderProjects('all'); setActiveFilter(this);">All</button>
+                    <button class="filter-btn px-6 py-2 bg-transparent border border-gray-700 text-gray-400 font-bold text-sm hover:border-brand-accent hover:text-brand-accent transition" onclick="renderProjects('school'); setActiveFilter(this);">Schools</button>
+                    <button class="filter-btn px-6 py-2 bg-transparent border border-gray-700 text-gray-400 font-bold text-sm hover:border-brand-accent hover:text-brand-accent transition" onclick="renderProjects('gov'); setActiveFilter(this);">Government</button>
+                    <button class="filter-btn px-6 py-2 bg-transparent border border-gray-700 text-gray-400 font-bold text-sm hover:border-brand-accent hover:text-brand-accent transition" onclick="renderProjects('reno'); setActiveFilter(this);">Renovations</button>
+                </div>
+            </div>
+
+            <!-- PROJECTS CONTAINER - DYNAMICALLY POPULATED -->
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript will insert project cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CAREERS -->
+    <section id="careers" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-20 items-start">
+                <div data-aos="fade-right">
+                    <div class="arch-line mb-6">
+                        <h3 class="text-brand-text font-bold uppercase tracking-widest text-xs">Join Our Team</h3>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-header font-bold text-brand-dark mb-6">
+                        BUILD YOUR CAREER.
+                    </h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        We are constantly growing and looking for dedicated professionals. If you are passionate about quality construction and safety, we want to hear from you.
+                    </p>
+                    <ul class="space-y-4 text-brand-dark mb-10 font-bold">
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Competitive Salary</li>
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> OSHA Safety Training</li>
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Diverse Project Portfolio</li>
+                    </ul>
+                </div>
+                
+                <!-- CAREER FORM -->
+                <div class="bg-gray-50 p-10 shadow-architectural border-t-4 border-brand-accent" data-aos="fade-left">
+                    <h4 class="text-2xl font-header font-bold text-brand-dark mb-8">Submit Application</h4>
+                    
+                    <!-- UPDATED FORM FOR DIRECT SENDING -->
+                    <form action="https://formspree.io/f/xbdjzjlo" method="POST" enctype="multipart/form-data">
+                        
+                        <!-- Configuration: Subject Line & Redirect -->
+                        <input type="hidden" name="_subject" value="New Job Application from Nehal Website" />
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" name="name" class="w-full border-0 border-b-2 border-gray-200 bg-transparent p-2 focus:ring-0 focus:border-brand-accent transition" placeholder="Jane Doe" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email Address</label>
+                                <input type="email" name="email" class="w-full border-0 border-b-2 border-gray-200 bg-transparent p-2 focus:ring-0 focus:border-brand-accent transition" placeholder="jane@example.com" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Position</label>
+                                <select name="position" class="w-full border-0 border-b-2 border-gray-200 bg-transparent p-2 focus:ring-0 focus:border-brand-accent transition">
+                                    <option value="Site Supervisor">Site Supervisor</option>
+                                    <option value="Assistant Project Manager">Assistant Project Manager</option>
+                                    <option value="Project Manager">Project Manager</option>
+                                    <option value="Safety Manager">Safety Manager</option>
+                                    <option value="Estimator">Estimator</option>
+                                    <option value="Foreman">Foreman</option>
+                                    <option value="Office Administration">Office Administration</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Resume</label>
+                                <div class="flex items-center justify-center w-full">
+                                    <label class="flex flex-col w-full h-24 border-2 border-gray-300 border-dashed hover:bg-white hover:border-brand-accent transition cursor-pointer justify-center items-center">
+                                        <i class="ph ph-upload-simple text-2xl text-gray-400"></i>
+                                        <span class="text-xs text-gray-400 mt-2">Upload PDF or Doc</span>
+                                        <input type="file" name="resume" class="opacity-0 w-0 h-0" accept=".pdf,.doc,.docx" />
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-dark text-white font-bold py-4 hover:bg-brand-accent transition-all duration-300">
+                                SUBMIT APPLICATION
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-brand-text font-bold uppercase tracking-widest text-xs">Get In Touch</h3>
+                <h2 class="text-4xl md:text-5xl font-header font-bold text-brand-dark mt-2">CONTACT US</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <!-- Headquarters Info -->
+                    <div class="bg-white p-8 shadow-sm border-l-4 border-brand-dark">
+                        <h3 class="text-xl font-header font-bold mb-6 text-brand-dark">Headquarters</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="ph-fill ph-map-pin text-2xl text-brand-accent"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Address</h4>
+                                    <p class="text-gray-500 text-sm mt-1">152 Airport Executive Park<br>Nanuet, New York 10954</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="ph-fill ph-phone text-2xl text-brand-accent"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Phone</h4>
+                                    <p class="text-gray-500 text-sm mt-1">(845) 517-0711</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="ph-fill ph-envelope-simple text-2xl text-brand-accent"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Email</h4>
+                                    <p class="text-gray-500 text-sm mt-1">info@nehalcontracting.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subcontractor Portal -->
+                    <div class="bg-brand-accent p-8 shadow-lg text-white">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="ph-fill ph-hard-hat text-3xl"></i>
+                            <h3 class="text-xl font-header font-bold">Subcontractors & Bidding</h3>
+                        </div>
+                        <p class="text-blue-100 text-sm mb-6 leading-relaxed">
+                            During bid season, please submit all quotes, estimates, and scope sheets directly to our estimating department.
+                        </p>
+                        <a href="mailto:info@nehalcontracting.com" class="block bg-white text-brand-accent text-center py-3 font-bold hover:bg-brand-dark hover:text-white transition">
+                            EMAIL ESTIMATING
+                        </a>
+                    </div>
+                </div>
+
+                <!-- General Inquiry Form -->
+                <div class="bg-white p-10 shadow-architectural">
+                    <h3 class="text-2xl font-header font-bold text-brand-dark mb-8">Send an Inquiry</h3>
+                    
+                    <!-- UPDATED FORM FOR DIRECT SENDING -->
+                    <form action="https://formspree.io/f/xbdjzjlo" method="POST">
+                        
+                        <!-- Hidden Subject Line Configuration -->
+                        <input type="hidden" name="_subject" value="New Inquiry from Nehal Website" />
+
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Name</label>
+                                <input type="text" name="name" class="w-full border border-gray-300 p-3 focus:outline-none focus:border-brand-accent transition" placeholder="Full Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email</label>
+                                <input type="email" name="email" class="w-full border border-gray-300 p-3 focus:outline-none focus:border-brand-accent transition" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Subject</label>
+                            <select name="topic" class="w-full border border-gray-300 p-3 focus:outline-none focus:border-brand-accent transition bg-white">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Vendor Registration">Vendor Registration</option>
+                                <option value="Partnership">Partnership</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Message</label>
+                            <textarea name="message" rows="4" class="w-full border border-gray-300 p-3 focus:outline-none focus:border-brand-accent transition" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-dark text-white font-bold py-4 hover:bg-brand-accent transition-all duration-300">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white border-t border-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center items-center gap-3 mb-8">
+                 <!-- Logo in Footer -->
+                <img src="logo.jpg" 
+                     alt="Nehal Contracting Inc." 
+                     class="h-10 w-auto opacity-80"
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';">
+                <span class="font-header text-xl font-bold uppercase tracking-widest">Nehal Contracting</span>
+            </div>
+            <p class="mb-8 max-w-lg mx-auto text-sm text-gray-500">
+                Serving the Tri-State area with integrity and excellence since 2000.
+            </p>
+            <div class="text-xs text-gray-600 border-t border-gray-900 pt-8">
+                &copy; <script>document.write(new Date().getFullYear())</script> Nehal Contracting Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SERVICE DETAIL OVERLAY/MODAL -->
+    <div id="service-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- Visual Backdrop -->
+        <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeServiceDetail()"></div>
+        
+        <!-- Interaction Wrapper: Clicking here closes the modal -->
+        <div class="relative w-full h-full overflow-y-auto" onclick="closeServiceDetail()">
+            <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
+                
+                <!-- Modal Content -->
+                <div id="service-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
+                    
+                    <!-- Close Button -->
+                    <button onclick="closeServiceDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
+                        <i class="ph ph-x text-2xl"></i>
+                    </button>
+                    
+                    <div class="grid md:grid-cols-2">
+                        <!-- Left: Image -->
+                        <div class="relative h-64 md:h-auto">
+                            <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Service Detail">
+                            <div class="absolute inset-0 bg-brand-dark/30"></div>
+                        </div>
+                        
+                        <!-- Right: Content -->
+                        <div class="p-10 md:p-12">
+                            <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent">
+                                Service Detail
+                            </div>
+                            <h2 id="modal-title" class="text-4xl font-header font-bold text-brand-dark mb-6 leading-none"></h2>
+                            <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed mb-8"></p>
+                            
+                            <h4 class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-4">Key Features</h4>
+                            <ul id="modal-list" class="space-y-3 mb-10 text-gray-600">
+                                <!-- List items injected by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAIL OVERLAY/MODAL (REVERTED TO OLD STYLE) -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeProjectDetail()"></div>
+        <!-- Wrapper handles the scrolling of the whole modal area -->
+        <div class="relative w-full h-full overflow-y-auto" onclick="closeProjectDetail()">
+            <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
+                
+                <!-- Modal Content: No fixed height, grows with content -->
+                <div id="project-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
+                    <button onclick="closeProjectDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
+                        <i class="ph ph-x text-2xl"></i>
+                    </button>
+                    <div class="grid md:grid-cols-2">
+                        <!-- Left: Image -->
+                        <div class="relative h-64 md:h-auto">
+                            <img id="proj-modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Project Detail">
+                        </div>
+                        
+                        <!-- Right: Content -->
+                        <div class="p-10 md:p-12">
+                            <div id="proj-modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+                            <h2 id="proj-modal-title" class="text-3xl font-header font-bold text-brand-dark mb-2 leading-none"></h2>
+                            <p id="proj-modal-loc" class="text-sm text-gray-400 font-bold uppercase tracking-wider mb-6 flex items-center gap-2">
+                                <i class="ph-fill ph-map-pin"></i> <span></span>
+                            </p>
+                            
+                            <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Client</p>
+                                    <p id="proj-modal-client" class="font-bold text-brand-dark"></p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Year</p>
+                                    <p id="proj-modal-year" class="font-bold text-brand-dark"></p>
+                                </div>
+                            </div>
+
+                            <p id="proj-modal-desc" class="text-gray-600 leading-relaxed mb-8"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT / LEADERSHIP MODAL (NEW) -->
+    <div id="about-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeAboutModal()"></div>
+        <div class="relative w-full h-full flex items-center justify-center p-4" onclick="closeAboutModal()">
+            
+            <div id="about-modal-content" class="bg-white w-full max-w-6xl rounded shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+                
+                <!-- Header -->
+                <div class="bg-gray-50 border-b border-gray-200 p-6 flex justify-between items-center flex-shrink-0">
+                    <div>
+                        <h2 class="text-2xl font-header font-bold text-brand-dark">About Nehal Contracting</h2>
+                        <p class="text-sm text-gray-500">Our Mission, Leadership, and Values</p>
+                    </div>
+                    <button onclick="closeAboutModal()" class="bg-gray-200 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
+                        <i class="ph ph-x text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Body -->
+                <div class="p-8 md:p-12 overflow-y-auto">
+                    
+                    <!-- 1. MISSION -->
+                    <div class="mb-16 max-w-4xl mx-auto text-center">
+                        <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent">
+                            Our Mission
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-brand-dark mb-6 leading-tight">
+                            "Our mission is to pioneer progress and reshape the future of New York City's infrastructure through innovation, purpose, and unwavering excellence."
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            We are dedicated to delivering sustainable, cutting-edge construction solutions that anticipate tomorrow’s needs while addressing today’s challenges. By leveraging advanced technologies, strategic planning, and expert craftsmanship, we aim to create projects that are not only built to last but also enrich the communities we serve with purpose-driven impact. Through collaboration, transparency, and ethical practices, we stand as a trusted partner in building a brighter, smarter, and more sustainable future.
+                        </p>
+                    </div>
+
+                    <hr class="border-gray-100 mb-16">
+
+                    <!-- 2. LEADERSHIP -->
+                    <div class="mb-16">
+                        <div class="text-center mb-12">
+                            <h3 class="text-2xl font-header font-bold text-brand-dark">Executive Leadership</h3>
+                            <div class="w-16 h-1 bg-brand-accent mx-auto mt-4"></div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                            <!-- Executive 1 -->
+                            <div class="flex flex-col items-center text-center">
+                                <!-- REPLACE SRC BELOW with Executive 1 Photo -->
+                                <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+R." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul R. Patel">
+                                <h4 class="text-xl font-bold text-brand-dark">Vipul R. Patel</h4>
+                                <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">President / CEO</p>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    With over 30 years of industry mastery, Vipul R. Patel stands as the visionary architect behind Nehal Contracting's enduring success. His extensive experience navigating complex public works for agencies like the SCA, MTA, and DDC has been instrumental in pioneering our operational strategies. A leader defined by uncompromising values, he steers the company with a steady hand, ensuring that every decision aligns with our roadmap to excellence.
+                                </p>
+                            </div>
+
+                            <!-- Executive 2 -->
+                            <div class="flex flex-col items-center text-center">
+                                <!-- REPLACE SRC BELOW with Executive 2 Photo -->
+                                <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+D." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul D. Patel">
+                                <h4 class="text-xl font-bold text-brand-dark">Vipul D. Patel</h4>
+                                <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">Senior Project Executive</p>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Commanding 30+ years of deep-rooted construction expertise, Vipul D. Patel serves as the operational nucleus of our project execution. Known as the encyclopedic force behind our NYC infrastructure knowledge base, he oversees all Project Managers with precision. His leadership ensures that Nehal’s core values of safety and quality are rigorously upheld, delivering seamless coordination on and off the site.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-100 mb-16">
+
+                    <!-- 3. SAFETY -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center bg-brand-dark text-white p-10 rounded shadow-architectural">
+                        <div>
+                            <h3 class="text-2xl font-header font-bold mb-4 text-white">Uncompromising Safety</h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed">
+                                In the high-risk environment of New York construction, safety is not a checklist—it is a mindset. We exceed standard requirements to ensure every worker returns home safely.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <i class="ph-fill ph-check-circle text-brand-accent text-xl"></i>
+                                    <span><strong>62-Hour SST:</strong> Mandatory for all supervisors.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="ph-fill ph-check-circle text-brand-accent text-xl"></i>
+                                    <span><strong>Site Safety Plans:</strong> Custom SSP for every project.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="ph-fill ph-check-circle text-brand-accent text-xl"></i>
+                                    <span><strong>Daily Briefings:</strong> Toolbox talks every morning.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative h-64 rounded overflow-hidden">
+                            <!-- REPLACE SRC BELOW with a safety related photo -->
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Safety">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        /* -----------------------------------------------------------------------
+           PROJECTS DATA CENTER
+        ----------------------------------------------------------------------- */
+        const projectsData = [
+            {
+                id: "p1",
+                category: ["reno", "gov"],
+                title: "New York City Center",
+                location: "New York, NY",
+                client: "NYCSCA",
+                year: "2023",
+                image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
+                description: "Complete interior reconstruction and modernization of this historic center. Scope included structural reinforcement, new MEP systems, and high-end finish carpentry throughout the main halls."
+            },
+            {
+                id: "p2",
+                category: ["school"],
+                title: "Public Schools (PS 18)",
+                location: "Bronx, NY",
+                client: "NYCSCA",
+                year: "2022",
+                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
+                description: "Comprehensive facility upgrade including new science labs, library renovation, and safety compliance updates. Work was performed during summer break to ensure zero disruption to the academic year."
+            },
+            {
+                id: "p3",
+                category: ["gov", "reno"],
+                title: "Queens Museum",
+                location: "Queens, NY",
+                client: "DDC",
+                year: "2021",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+                description: "Specialized restoration work for this cultural landmark. Project involved exterior masonry restoration, climate control system upgrades, and gallery space reconfiguration."
+            }
+        ];
+
+        /* -----------------------------------------------------------------------
+           RENDER PROJECTS GRID
+        ----------------------------------------------------------------------- */
+        function renderProjects(filter) {
+            const container = document.getElementById('projects-container');
+            if(!container) return;
+            
+            container.innerHTML = ''; 
+
+            const filtered = filter === 'all' 
+                ? projectsData 
+                : projectsData.filter(p => p.category.includes(filter));
+
+            filtered.forEach((p, index) => {
+                const card = document.createElement('div');
+                card.className = "project-card group relative overflow-hidden h-80 cursor-pointer bg-gray-800 rounded shadow-lg";
+                card.setAttribute('data-aos', 'zoom-in');
+                card.setAttribute('data-aos-delay', index * 100);
+                card.onclick = () => openProjectDetail(p.id);
+
+                card.innerHTML = `
+                    <img src="${p.image}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-70 group-hover:opacity-100" alt="${p.title}">
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-brand-accent transition-all duration-300 m-4 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
+                        <span class="text-brand-accent font-bold uppercase text-xs tracking-wider mb-1 block">${p.client}</span>
+                        <h4 class="text-2xl font-bold text-white leading-tight">${p.title}</h4>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function setActiveFilter(btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('bg-brand-accent', 'text-white', 'border-transparent');
+                b.classList.add('bg-transparent', 'text-gray-400', 'border-gray-700');
+            });
+            btn.classList.remove('bg-transparent', 'text-gray-400', 'border-gray-700');
+            btn.classList.add('bg-brand-accent', 'text-white', 'border-transparent');
+        }
+
+        function openProjectDetail(id) {
+            const data = projectsData.find(p => p.id === id);
+            if(!data) return;
+
+            const modal = document.getElementById('project-modal');
+            const title = document.getElementById('proj-modal-title');
+            const img = document.getElementById('proj-modal-img');
+            const loc = document.getElementById('proj-modal-loc');
+            const client = document.getElementById('proj-modal-client');
+            const year = document.getElementById('proj-modal-year');
+            const desc = document.getElementById('proj-modal-desc');
+            const tags = document.getElementById('proj-modal-tags');
+
+            if(title) title.innerText = data.title;
+            if(img) img.src = data.image;
+            if(loc) loc.querySelector('span').innerText = data.location;
+            if(client) client.innerText = data.client;
+            if(year) year.innerText = data.year;
+            if(desc) desc.innerText = data.description;
+
+            if(tags) {
+                tags.innerHTML = '';
+                data.category.forEach(cat => {
+                    const tag = document.createElement('span');
+                    tag.className = "text-[10px] uppercase font-bold px-2 py-1 bg-brand-silver text-brand-text rounded";
+                    tag.innerText = cat;
+                    tags.appendChild(tag);
+                });
+            }
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        function closeProjectDetail() {
+            const modal = document.getElementById('project-modal');
+            if(!modal) return;
+            modal.classList.remove('active');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        /* -----------------------------------------------------------------------
+           SERVICE DETAIL LOGIC
+        ----------------------------------------------------------------------- */
+        const serviceData = {
+            gc: {
+                title: "General Contracting",
+                desc: "As your single point of responsibility, Nehal Contracting manages every aspect of construction from ground-breaking to occupancy. We coordinate all subcontractors, manage logistics, and ensure quality control, delivering turnkey solutions for commercial and public sector clients.",
+                image: "https://images.unsplash.com/photo-1590644365607-1c5a38fc6fb9?q=80&w=1000",
+                features: ["Full-service project management and site supervision.", "Coordination of all trades (MEP, Structural, Finish).", "Schedule optimization and critical path management.", "Quality assurance and punch-list execution."]
+            },
+            schools: {
+                title: "Schools & Universities",
+                desc: "We understand the unique constraints of working in educational environments. From tight summer deadlines to occupied building safety protocols, we have successfully renovated dozens of schools for the NYCSCA and private universities.",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000",
+                features: ["NYCSCA and University compliance expertise.", "Strict safety protocols for occupied campuses.", "Summer blitz schedule management.", "Auditorium, gymnasium, and classroom modernization."]
+            },
+            gov: {
+                title: "Government Works",
+                desc: "Trusted by agencies like DDC, DASNY, and MTA, we navigate the complexities of public sector contracting. We specialize in secure facilities, landmark restorations, and infrastructure upgrades requiring high-level security clearance and regulatory adherence.",
+                image: "https://images.unsplash.com/photo-1555529902-5261145633bf?q=80&w=1000",
+                features: ["Secure facility construction and renovation.", "Historical landmark preservation and restoration.", "Public infrastructure and utility upgrades.", "Strict adherence to municipal and federal codes."]
+            },
+            reno: {
+                title: "Renovations",
+                desc: "We revitalize aging infrastructure to meet modern standards. Whether it's a structural update, a complete interior gut renovation, or exterior facade restoration, our team ensures the longevity and functionality of your building assets.",
+                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000",
+                features: ["Complete interior fit-outs and reconfiguration.", "Exterior masonry restoration and waterproofing.", "Structural reinforcement and steel modification.", "MEP systems modernization."]
+            },
+            safety: {
+                title: "Safety & Compliance",
+                desc: "Safety is not just a requirement; it is our culture. Nehal Contracting maintains a rigorous safety program. Our site safety managers are OSHA-certified and dedicated to preventing accidents through proactive planning and daily inspections.",
+                image: "https://images.unsplash.com/photo-1508454648301-7c3046ff6d2d?q=80&w=1000",
+                features: ["Comprehensive Site Safety Plans (SSP).", "Daily toolbox talks and hazard analysis.", "Full 62-Hour SST compliance for all supervisors.", "COVID-19 and environmental safety protocols."]
+            },
+            pm: {
+                title: "Project Management",
+                desc: "Successful projects start with planning. Our project managers utilize industry-leading software and methodologies to control costs, track progress, and communicate transparently with stakeholders throughout the project lifecycle.",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000",
+                features: ["Detailed budget estimation and cost control.", "CPM scheduling and timeline tracking.", "Submittal and RFI management.", "Transparent reporting and stakeholder communication."]
+            }
+        };
+
+        function openServiceDetail(serviceKey) {
+            const modal = document.getElementById('service-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalImg = document.getElementById('modal-img');
+            const modalList = document.getElementById('modal-list');
+            const data = serviceData[serviceKey];
+
+            if(!data || !modal) return;
+
+            if(modalTitle) modalTitle.innerText = data.title;
+            if(modalDesc) modalDesc.innerText = data.desc;
+            if(modalImg) modalImg.src = data.image;
+            
+            if(modalList) {
+                modalList.innerHTML = '';
+                data.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-center gap-3';
+                    li.innerHTML = `<i class="ph-fill ph-check-circle text-brand-accent text-xl"></i> <span>${feature}</span>`;
+                    modalList.appendChild(li);
+                });
+            }
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        function closeServiceDetail() {
+            const modal = document.getElementById('service-modal');
+            if(!modal) return;
+            modal.classList.remove('active');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        /* -----------------------------------------------------------------------
+           ABOUT MODAL LOGIC
+        ----------------------------------------------------------------------- */
+        function openAboutModal() {
+            const modal = document.getElementById('about-modal');
+            const content = document.getElementById('about-modal-content');
+            
+            if(!modal) return;
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                if(content) {
+                    content.style.transform = 'scale(1)';
+                    content.style.opacity = '1';
+                }
+            }, 10);
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('about-modal');
+            const content = document.getElementById('about-modal-content');
+            
+            if(!modal) return;
+
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            if(content) {
+                content.style.transform = 'scale(0.95)';
+                content.style.opacity = '0';
+            }
+            
+            document.body.classList.remove('modal-active');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Initialize things on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects('all');
+            const aboutContent = document.getElementById('about-modal-content');
+            if(aboutContent) {
+                aboutContent.style.transition = 'all 0.3s ease-out';
+                aboutContent.style.transform = 'scale(0.95)';
+                aboutContent.style.opacity = '0';
+            }
+        });
+
+    </script>
+</body>
+</html>
