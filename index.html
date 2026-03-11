@@ -70,17 +70,6 @@
             background-color: #3b82f6; 
         }
         
-        /* Video Background Styling */
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
         /* Agency Logo Boxes */
         .agency-logo-box {
             display: flex;
@@ -92,21 +81,14 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        /* Hover effects removed for static appearance */
-        .agency-text {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #64748b;
-        }
         
-        /* Service Detail Modal Animation */
-        #service-modal-content, #project-modal-content {
+        /* Modal Animation */
+        #service-modal-content, #project-modal-content, #about-modal-content {
             transform: translateY(20px);
             opacity: 0;
             transition: all 0.4s ease-out;
         }
-        #service-modal.active #service-modal-content, #project-modal.active #project-modal-content {
+        #service-modal.active #service-modal-content, #project-modal.active #project-modal-content, #about-modal.active #about-modal-content {
             transform: translateY(0);
             opacity: 1;
         }
@@ -135,7 +117,6 @@
             <div class="flex justify-between h-24 items-center">
                 <!-- LOGO AREA -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <!-- REPLACE 'logo.jpg' with your actual logo file name -->
                     <img src="logo.jpg" 
                          alt="Nehal Contracting Inc." 
                          class="h-16 w-auto object-contain bg-white/10 p-1 rounded"
@@ -176,14 +157,12 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION - WITH VIDEO BACKGROUND -->
+    <!-- HERO SECTION - STATIC IMAGE -->
     <section id="home" class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-dark">
-        <!-- Video Background -->
-        <!-- REPLACE THE 'src' BELOW with your video file name (e.g., "video.mp4") -->
-        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070" class="video-background opacity-50">
-            <source src="https://videos.pexels.com/video-files/8539209/8539209-uhd_2560_1440_25fps.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
+        <!-- Static Background Image -->
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+             class="absolute inset-0 w-full h-full object-cover opacity-50" 
+             alt="Modern Construction Site">
         
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-hero-gradient z-10"></div>
@@ -272,8 +251,6 @@
                     </button>
                 </div>
                 <div class="relative" data-aos="fade-left">
-                    <!-- Clean Architectural Image -->
-                    <!-- REPLACE THE LINK BELOW with your team photo or office photo -->
                     <img src="https://images.unsplash.com/photo-1541976544351-e48770f39285?q=80&w=2070" 
                          class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural" alt="Construction Architecture">
                     <div class="absolute -bottom-10 -left-10 bg-brand-accent p-10 hidden md:block text-white">
@@ -382,7 +359,6 @@
                 <h2 class="text-3xl md:text-4xl font-header font-bold text-brand-dark mt-2">TRUSTED AGENCY PARTNERS</h2>
             </div>
             
-            <!-- Updated Grid for 8 Logos -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- NYCSCA -->
                 <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="0">
@@ -420,13 +396,13 @@
                     <span class="agency-text hidden">NYCHA</span>
                 </div>
 
-                <!-- TDX Construction (New) -->
+                <!-- TDX Construction -->
                 <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="300">
                     <img src="client-tdx.png" alt="TDX Construction" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="agency-text hidden">TDX</span>
                 </div>
 
-                <!-- Skanska (New) -->
+                <!-- Skanska -->
                 <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="350">
                     <img src="client-skanska.png" alt="Skanska" class="h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="agency-text hidden">SKANSKA</span>
@@ -454,7 +430,7 @@
                 </div>
             </div>
 
-            <!-- PROJECTS CONTAINER - DYNAMICALLY POPULATED -->
+            <!-- PROJECTS CONTAINER -->
             <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Javascript will insert project cards here -->
             </div>
@@ -486,10 +462,7 @@
                 <div class="bg-gray-50 p-10 shadow-architectural border-t-4 border-brand-accent" data-aos="fade-left">
                     <h4 class="text-2xl font-header font-bold text-brand-dark mb-8">Submit Application</h4>
                     
-                    <!-- UPDATED FORM FOR DIRECT SENDING -->
                     <form action="https://formspree.io/f/xbdjzjlo" method="POST" enctype="multipart/form-data">
-                        
-                        <!-- Configuration: Subject Line & Redirect -->
                         <input type="hidden" name="_subject" value="New Job Application from Nehal Website" />
                         
                         <div class="space-y-6">
@@ -590,10 +563,7 @@
                 <div class="bg-white p-10 shadow-architectural">
                     <h3 class="text-2xl font-header font-bold text-brand-dark mb-8">Send an Inquiry</h3>
                     
-                    <!-- UPDATED FORM FOR DIRECT SENDING -->
                     <form action="https://formspree.io/f/xbdjzjlo" method="POST">
-                        
-                        <!-- Hidden Subject Line Configuration -->
                         <input type="hidden" name="_subject" value="New Inquiry from Nehal Website" />
 
                         <div class="grid grid-cols-2 gap-6 mb-6">
@@ -649,39 +619,26 @@
 
     <!-- SERVICE DETAIL OVERLAY/MODAL -->
     <div id="service-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
-        <!-- Visual Backdrop -->
         <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeServiceDetail()"></div>
-        
-        <!-- Interaction Wrapper: Clicking here closes the modal -->
         <div class="relative w-full h-full overflow-y-auto" onclick="closeServiceDetail()">
             <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
-                
-                <!-- Modal Content -->
                 <div id="service-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
-                    
-                    <!-- Close Button -->
                     <button onclick="closeServiceDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
                         <i class="ph ph-x text-2xl"></i>
                     </button>
-                    
                     <div class="grid md:grid-cols-2">
-                        <!-- Left: Image -->
                         <div class="relative h-64 md:h-auto">
                             <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Service Detail">
                             <div class="absolute inset-0 bg-brand-dark/30"></div>
                         </div>
-                        
-                        <!-- Right: Content -->
                         <div class="p-10 md:p-12">
                             <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent">
                                 Service Detail
                             </div>
                             <h2 id="modal-title" class="text-4xl font-header font-bold text-brand-dark mb-6 leading-none"></h2>
                             <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed mb-8"></p>
-                            
                             <h4 class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-4">Key Features</h4>
                             <ul id="modal-list" class="space-y-3 mb-10 text-gray-600">
-                                <!-- List items injected by JS -->
                             </ul>
                         </div>
                     </div>
@@ -693,29 +650,22 @@
     <!-- PROJECT DETAIL OVERLAY/MODAL (REVERTED TO OLD STYLE) -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeProjectDetail()"></div>
-        <!-- Wrapper handles the scrolling of the whole modal area -->
         <div class="relative w-full h-full overflow-y-auto" onclick="closeProjectDetail()">
             <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
-                
-                <!-- Modal Content: No fixed height, grows with content -->
                 <div id="project-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
                     <button onclick="closeProjectDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
                         <i class="ph ph-x text-2xl"></i>
                     </button>
                     <div class="grid md:grid-cols-2">
-                        <!-- Left: Image -->
                         <div class="relative h-64 md:h-auto">
                             <img id="proj-modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Project Detail">
                         </div>
-                        
-                        <!-- Right: Content -->
                         <div class="p-10 md:p-12">
                             <div id="proj-modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
                             <h2 id="proj-modal-title" class="text-3xl font-header font-bold text-brand-dark mb-2 leading-none"></h2>
                             <p id="proj-modal-loc" class="text-sm text-gray-400 font-bold uppercase tracking-wider mb-6 flex items-center gap-2">
                                 <i class="ph-fill ph-map-pin"></i> <span></span>
                             </p>
-                            
                             <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
                                 <div>
                                     <p class="text-xs text-gray-400 uppercase tracking-wider">Client</p>
@@ -726,7 +676,6 @@
                                     <p id="proj-modal-year" class="font-bold text-brand-dark"></p>
                                 </div>
                             </div>
-
                             <p id="proj-modal-desc" class="text-gray-600 leading-relaxed mb-8"></p>
                         </div>
                     </div>
@@ -735,14 +684,11 @@
         </div>
     </div>
 
-    <!-- ABOUT / LEADERSHIP MODAL (NEW) -->
+    <!-- ABOUT / LEADERSHIP MODAL -->
     <div id="about-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeAboutModal()"></div>
         <div class="relative w-full h-full flex items-center justify-center p-4" onclick="closeAboutModal()">
-            
             <div id="about-modal-content" class="bg-white w-full max-w-6xl rounded shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
-                
-                <!-- Header -->
                 <div class="bg-gray-50 border-b border-gray-200 p-6 flex justify-between items-center flex-shrink-0">
                     <div>
                         <h2 class="text-2xl font-header font-bold text-brand-dark">About Nehal Contracting</h2>
@@ -752,10 +698,7 @@
                         <i class="ph ph-x text-xl"></i>
                     </button>
                 </div>
-
-                <!-- Scrollable Body -->
                 <div class="p-8 md:p-12 overflow-y-auto">
-                    
                     <!-- 1. MISSION -->
                     <div class="mb-16 max-w-4xl mx-auto text-center">
                         <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent">
@@ -781,7 +724,6 @@
                         <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                             <!-- Executive 1 -->
                             <div class="flex flex-col items-center text-center">
-                                <!-- REPLACE SRC BELOW with Executive 1 Photo -->
                                 <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+R." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul R. Patel">
                                 <h4 class="text-xl font-bold text-brand-dark">Vipul R. Patel</h4>
                                 <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">President / CEO</p>
@@ -792,7 +734,6 @@
 
                             <!-- Executive 2 -->
                             <div class="flex flex-col items-center text-center">
-                                <!-- REPLACE SRC BELOW with Executive 2 Photo -->
                                 <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+D." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul D. Patel">
                                 <h4 class="text-xl font-bold text-brand-dark">Vipul D. Patel</h4>
                                 <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">Senior Project Executive</p>
@@ -828,11 +769,9 @@
                             </ul>
                         </div>
                         <div class="relative h-64 rounded overflow-hidden">
-                            <!-- REPLACE SRC BELOW with a safety related photo -->
                             <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Safety">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -862,33 +801,53 @@
         const projectsData = [
             {
                 id: "p1",
-                category: ["reno", "gov"],
-                title: "New York City Center",
-                location: "New York, NY",
+                category: ["school", "reno"],
+                title: "Albee Square Montessori Public School",
+                location: "Brooklyn, NY",
                 client: "NYCSCA",
-                year: "2023",
-                image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
-                description: "Complete interior reconstruction and modernization of this historic center. Scope included structural reinforcement, new MEP systems, and high-end finish carpentry throughout the main halls."
+                year: "2024",
+                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
+                description: "State-of-the-art interior fit-out and modernization for the Albee Square Montessori facility. Scope included specialized early childhood classrooms, ADA compliance upgrades, and advanced safety systems."
             },
             {
                 id: "p2",
                 category: ["school"],
-                title: "Public Schools (PS 18)",
-                location: "Bronx, NY",
+                title: "Public School 18K (PS 18K)",
+                location: "Brooklyn, NY",
                 client: "NYCSCA",
                 year: "2022",
-                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
-                description: "Comprehensive facility upgrade including new science labs, library renovation, and safety compliance updates. Work was performed during summer break to ensure zero disruption to the academic year."
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800",
+                description: "Comprehensive facility upgrade including new science labs, library renovation, and safety compliance updates. Work was performed with strict adherence to occupied-building safety protocols."
             },
             {
                 id: "p3",
                 category: ["gov", "reno"],
                 title: "Queens Museum",
                 location: "Queens, NY",
-                client: "DDC",
+                client: "NYC DDC",
                 year: "2021",
                 image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
                 description: "Specialized restoration work for this cultural landmark. Project involved exterior masonry restoration, climate control system upgrades, and gallery space reconfiguration."
+            },
+            {
+                id: "p4",
+                category: ["school", "reno"],
+                title: "Public School 189K (PS 189K)",
+                location: "Brooklyn, NY",
+                client: "NYCSCA",
+                year: "2023",
+                image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800",
+                description: "Extensive exterior and interior renovation. Delivered comprehensive roofing replacement, parapet reconstruction, and modernization of the school's main auditorium and gymnasium."
+            },
+            {
+                id: "p5",
+                category: ["school"],
+                title: "Public School 190K (PS 190K)",
+                location: "Brooklyn, NY",
+                client: "NYCSCA",
+                year: "2023",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800",
+                description: "Complete infrastructure upgrade focusing on MEP systems, new HVAC installation, and structural reinforcements, all completed within an aggressive summer blitz schedule."
             }
         ];
 
