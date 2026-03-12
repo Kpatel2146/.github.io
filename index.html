@@ -117,9 +117,9 @@
             <div class="flex justify-between h-24 items-center">
                 <!-- LOGO AREA -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="logo.jpg" 
+                    <img src="logo.png" 
                          alt="Nehal Contracting Inc." 
-                         class="h-16 w-auto object-contain bg-white/10 p-1 rounded"
+                         class="h-16 w-auto object-contain bg-white/10 p-1 rounded transition-transform duration-300 group-hover:scale-105"
                          onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';"> 
                 </a>
                 
@@ -159,7 +159,7 @@
 
     <!-- HERO SECTION - STATIC IMAGE -->
     <section id="home" class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-dark">
-        <!-- Static Background Image -->
+        <!-- Stock Background Image Restored -->
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
              class="absolute inset-0 w-full h-full object-cover opacity-50" 
              alt="Modern Construction Site">
@@ -251,8 +251,10 @@
                     </button>
                 </div>
                 <div class="relative" data-aos="fade-left">
+                    <!-- Stock Image Restored -->
                     <img src="https://images.unsplash.com/photo-1541976544351-e48770f39285?q=80&w=2070" 
-                         class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural" alt="Construction Architecture">
+                         class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural" 
+                         alt="Construction Architecture">
                     <div class="absolute -bottom-10 -left-10 bg-brand-accent p-10 hidden md:block text-white">
                         <p class="font-header text-4xl font-bold">25+</p>
                         <p class="text-sm uppercase tracking-widest">Years Experience</p>
@@ -602,9 +604,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="flex justify-center items-center gap-3 mb-8">
                  <!-- Logo in Footer -->
-                <img src="logo.jpg" 
+                <img src="logo.png" 
                      alt="Nehal Contracting Inc." 
-                     class="h-10 w-auto opacity-80"
+                     class="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity"
                      onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';">
                 <span class="font-header text-xl font-bold uppercase tracking-widest">Nehal Contracting</span>
             </div>
@@ -621,64 +623,90 @@
     <div id="service-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeServiceDetail()"></div>
         <div class="relative w-full h-full overflow-y-auto" onclick="closeServiceDetail()">
-            <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
-                <div id="service-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
-                    <button onclick="closeServiceDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
+            <div class="w-full max-w-7xl mx-auto min-h-screen flex items-center py-6 px-4">
+                <div id="service-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-[80vh] max-h-[900px]" onclick="event.stopPropagation()">
+                    <button onclick="closeServiceDetail()" class="absolute top-4 right-4 z-50 bg-white/80 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm backdrop-blur-sm">
                         <i class="ph ph-x text-2xl"></i>
                     </button>
-                    <div class="grid md:grid-cols-2">
-                        <div class="relative h-64 md:h-auto">
-                            <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Service Detail">
-                            <div class="absolute inset-0 bg-brand-dark/30"></div>
+                    
+                    <div class="relative w-full h-[40%] md:h-full md:w-1/2 bg-brand-dark group overflow-hidden flex items-center justify-center flex-shrink-0">
+                        <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Service Detail" onerror="this.onerror=null; this.src='https://placehold.co/800x800/e2e8f0/1e293b?text=Upload+Service+Image';">
+                        <div class="absolute inset-0 bg-brand-dark/30"></div>
+                    </div>
+                    
+                    <div class="w-full h-[60%] md:h-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
+                        <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent mt-4 md:mt-0">
+                            Service Detail
                         </div>
-                        <div class="p-10 md:p-12">
-                            <div class="inline-flex items-center gap-2 border border-brand-accent/20 bg-blue-50 px-3 py-1 rounded text-xs font-bold tracking-widest mb-6 uppercase text-brand-accent">
-                                Service Detail
-                            </div>
-                            <h2 id="modal-title" class="text-4xl font-header font-bold text-brand-dark mb-6 leading-none"></h2>
-                            <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed mb-8"></p>
-                            <h4 class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-4">Key Features</h4>
-                            <ul id="modal-list" class="space-y-3 mb-10 text-gray-600">
-                            </ul>
-                        </div>
+                        <h2 id="modal-title" class="text-4xl font-header font-bold text-brand-dark mb-6 leading-none"></h2>
+                        <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed mb-8"></p>
+                        <h4 class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-4">Key Features</h4>
+                        <ul id="modal-list" class="space-y-3 mb-10 text-gray-600">
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT DETAIL OVERLAY/MODAL (REVERTED TO OLD STYLE) -->
+    <!-- PROJECT DETAIL OVERLAY/MODAL (WITH IMAGE SLIDER, SCOPE & INDEPENDENT SCROLL) -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-sm" onclick="closeProjectDetail()"></div>
-        <div class="relative w-full h-full overflow-y-auto" onclick="closeProjectDetail()">
-            <div class="max-w-5xl mx-auto min-h-screen flex items-center py-10 px-4">
-                <div id="project-modal-content" class="bg-white w-full rounded shadow-2xl relative overflow-hidden" onclick="event.stopPropagation()">
-                    <button onclick="closeProjectDetail()" class="absolute top-4 right-4 z-50 bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm">
-                        <i class="ph ph-x text-2xl"></i>
+        <div class="relative w-full h-full flex items-center justify-center p-4" onclick="closeProjectDetail()">
+            
+            <!-- Redesigned Modal Container (Wider, Fixed Height) -->
+            <div id="project-modal-content" class="bg-white w-full max-w-7xl rounded shadow-2xl relative overflow-hidden flex flex-col md:flex-row h-[90vh] max-h-[900px]" onclick="event.stopPropagation()">
+                
+                <!-- Close Button -->
+                <button onclick="closeProjectDetail()" class="absolute top-4 right-4 z-50 bg-white/80 md:bg-gray-100 hover:bg-brand-accent p-2 rounded-full text-brand-dark hover:text-white transition shadow-sm backdrop-blur-sm">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+                
+                <!-- LEFT SIDE: IMAGE SLIDER (Locks into place) -->
+                <div class="relative w-full h-[40%] md:h-full md:w-3/5 bg-gray-900 group overflow-hidden flex items-center justify-center flex-shrink-0">
+                    <!-- Project Image (Set to "contain" so photos aren't cropped) -->
+                    <img id="proj-modal-img" src="" class="absolute inset-0 w-full h-full object-contain p-2 md:p-6 transition-opacity duration-300" alt="Project Detail" onerror="this.onerror=null; this.src='https://placehold.co/800x800/1e293b/FFF?text=Upload+Project+Image';">
+                    
+                    <!-- Sleek Slider Arrows -->
+                    <button onclick="prevProjectImage(event)" class="absolute left-0 top-0 bottom-0 px-4 bg-gradient-to-r from-black/60 to-transparent text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:text-brand-accent flex items-center">
+                        <i class="ph ph-caret-left text-4xl"></i>
                     </button>
-                    <div class="grid md:grid-cols-2">
-                        <div class="relative h-64 md:h-auto">
-                            <img id="proj-modal-img" src="" class="absolute inset-0 w-full h-full object-cover" alt="Project Detail">
+                    
+                    <button onclick="nextProjectImage(event)" class="absolute right-0 top-0 bottom-0 px-4 bg-gradient-to-l from-black/60 to-transparent text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:text-brand-accent flex items-center">
+                        <i class="ph ph-caret-right text-4xl"></i>
+                    </button>
+
+                    <!-- Image Counter Indicator -->
+                    <div id="proj-modal-counter" class="absolute bottom-4 right-4 bg-black/80 text-white text-xs px-3 py-1 rounded-full tracking-widest font-bold border border-white/20 backdrop-blur-sm">
+                        1 / 3
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: CONTENT (Scrolls independently if text is too long) -->
+                <div class="w-full h-[60%] md:h-full md:w-2/5 p-6 md:p-10 overflow-y-auto bg-white">
+                    <div id="proj-modal-tags" class="flex flex-wrap gap-2 mb-6 mt-4 md:mt-0 pr-8"></div>
+                    <h2 id="proj-modal-title" class="text-3xl font-header font-bold text-brand-dark mb-2 leading-none pr-8"></h2>
+                    <p id="proj-modal-loc" class="text-sm text-gray-400 font-bold uppercase tracking-wider mb-6 flex items-center gap-2">
+                        <i class="ph-fill ph-map-pin"></i> <span></span>
+                    </p>
+                    
+                    <!-- Updated Grid to include Scope -->
+                    <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Client</p>
+                            <p id="proj-modal-client" class="font-bold text-brand-dark"></p>
                         </div>
-                        <div class="p-10 md:p-12">
-                            <div id="proj-modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
-                            <h2 id="proj-modal-title" class="text-3xl font-header font-bold text-brand-dark mb-2 leading-none"></h2>
-                            <p id="proj-modal-loc" class="text-sm text-gray-400 font-bold uppercase tracking-wider mb-6 flex items-center gap-2">
-                                <i class="ph-fill ph-map-pin"></i> <span></span>
-                            </p>
-                            <div class="grid grid-cols-2 gap-4 mb-6 border-y border-gray-100 py-4">
-                                <div>
-                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Client</p>
-                                    <p id="proj-modal-client" class="font-bold text-brand-dark"></p>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-gray-400 uppercase tracking-wider">Year</p>
-                                    <p id="proj-modal-year" class="font-bold text-brand-dark"></p>
-                                </div>
-                            </div>
-                            <p id="proj-modal-desc" class="text-gray-600 leading-relaxed mb-8"></p>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Year</p>
+                            <p id="proj-modal-year" class="font-bold text-brand-dark"></p>
+                        </div>
+                        <div class="col-span-2 mt-2">
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Scope</p>
+                            <p id="proj-modal-scope" class="font-bold text-brand-accent"></p>
                         </div>
                     </div>
+                    <!-- Description Area -->
+                    <div id="proj-modal-desc" class="text-gray-600 leading-relaxed mb-8"></div>
                 </div>
             </div>
         </div>
@@ -724,7 +752,7 @@
                         <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                             <!-- Executive 1 -->
                             <div class="flex flex-col items-center text-center">
-                                <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+R." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul R. Patel">
+                                <img src="vipul-r.jpg" class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul R. Patel" onerror="this.onerror=null; this.src='https://placehold.co/400x400/e2e8f0/1e293b?text=Upload+vipul-r.jpg';">
                                 <h4 class="text-xl font-bold text-brand-dark">Vipul R. Patel</h4>
                                 <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">President / CEO</p>
                                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -734,7 +762,7 @@
 
                             <!-- Executive 2 -->
                             <div class="flex flex-col items-center text-center">
-                                <img src="https://placehold.co/400x400/e2e8f0/1e293b?text=Vipul+D." class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul D. Patel">
+                                <img src="vipul-d.jpg" class="w-48 h-48 rounded-full object-cover mb-6 border-4 border-white shadow-lg" alt="Vipul D. Patel" onerror="this.onerror=null; this.src='https://placehold.co/400x400/e2e8f0/1e293b?text=Upload+vipul-d.jpg';">
                                 <h4 class="text-xl font-bold text-brand-dark">Vipul D. Patel</h4>
                                 <p class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-4">Senior Project Executive</p>
                                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -769,6 +797,7 @@
                             </ul>
                         </div>
                         <div class="relative h-64 rounded overflow-hidden">
+                            <!-- Stock Image Restored -->
                             <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Safety">
                         </div>
                     </div>
@@ -796,7 +825,7 @@
         }
 
         /* -----------------------------------------------------------------------
-           PROJECTS DATA CENTER
+           PROJECTS DATA CENTER (LOCAL IMAGES FOR SLIDER)
         ----------------------------------------------------------------------- */
         const projectsData = [
             {
@@ -805,9 +834,14 @@
                 title: "Albee Square Montessori Public School",
                 location: "Brooklyn, NY",
                 client: "NYCSCA",
-                year: "2024",
-                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
-                description: "State-of-the-art interior fit-out and modernization for the Albee Square Montessori facility. Scope included specialized early childhood classrooms, ADA compliance upgrades, and advanced safety systems."
+                year: "2023",
+                scope: "Interior Fit-Out",
+                images: [
+                    "albee-1.jpg",
+                    "albee-2.jpg", 
+                    "albee-3.jpg"
+                ], 
+                description: "This project involves a comprehensive 41,524-square-foot interior fit-out to establish a primary school for grades Pre-K through 5 within a 34-story mixed-use tower. The scope of work transforms raw space into a specialized educational environment featuring administrative offices, a library, a gymnasium, and a cafeteria served by a warming pantry. Infrastructure improvements include the installation of two dedicated passenger elevators, internal staircases, and two second-floor terraces, alongside the execution of all partition walls, electric heating, fire protection systems, and high-end security finishes.<br><br><strong class='text-brand-dark font-header text-xl'>Complexity and Coordination</strong><ul class='list-disc pl-5 mt-3 space-y-2 text-sm text-gray-600'><li><strong>Base Building Integration:</strong> Extensive technical coordination with the developer’s core systems, including post-fire smoke purges, waste stacks, roof drainage, and emergency power.</li><li><strong>Regulatory Compliance:</strong> Adherence to rigorous standards from the NYC Building Code, NYFD, and the Office of School Food and Nutrition Services.</li><li><strong>Trade Management:</strong> Management of \"Wicks\" trade requirements for HVAC, plumbing, and electrical systems within a strict 600-day performance period.</li><li><strong>Artistic Integration:</strong> Close collaboration with the \"Public Art for Public Schools\" (PAPS) unit for the precise installation of museum-quality artwork and custom niche framing.</li><li><strong>Rigorous Inspections:</strong> Coordination of mandatory progress and special inspections for fire resistance, energy code compliance, and structural integrity.</li></ul>"
             },
             {
                 id: "p2",
@@ -816,7 +850,11 @@
                 location: "Brooklyn, NY",
                 client: "NYCSCA",
                 year: "2022",
-                image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800",
+                scope: "Facility Upgrade & Modernization",
+                images: [
+                    "ps18-1.jpg",
+                    "ps18-2.jpg"
+                ],
                 description: "Comprehensive facility upgrade including new science labs, library renovation, and safety compliance updates. Work was performed with strict adherence to occupied-building safety protocols."
             },
             {
@@ -826,7 +864,11 @@
                 location: "Queens, NY",
                 client: "NYC DDC",
                 year: "2021",
-                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+                scope: "Historic Restoration & MEP Upgrade",
+                images: [
+                    "queens-1.jpg",
+                    "queens-2.jpg"
+                ],
                 description: "Specialized restoration work for this cultural landmark. Project involved exterior masonry restoration, climate control system upgrades, and gallery space reconfiguration."
             },
             {
@@ -836,7 +878,11 @@
                 location: "Brooklyn, NY",
                 client: "NYCSCA",
                 year: "2023",
-                image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800",
+                scope: "Exterior & Interior Renovation",
+                images: [
+                    "ps189-1.jpg",
+                    "ps189-2.jpg"
+                ],
                 description: "Extensive exterior and interior renovation. Delivered comprehensive roofing replacement, parapet reconstruction, and modernization of the school's main auditorium and gymnasium."
             },
             {
@@ -846,10 +892,19 @@
                 location: "Brooklyn, NY",
                 client: "NYCSCA",
                 year: "2023",
-                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800",
+                scope: "Infrastructure & MEP Upgrade",
+                images: [
+                    "ps190-1.jpg",
+                    "ps190-2.jpg",
+                    "ps190-3.jpg"
+                ],
                 description: "Complete infrastructure upgrade focusing on MEP systems, new HVAC installation, and structural reinforcements, all completed within an aggressive summer blitz schedule."
             }
         ];
+
+        /* Project Slider State Variables */
+        let currentProjectId = null;
+        let currentImageIndex = 0;
 
         /* -----------------------------------------------------------------------
            RENDER PROJECTS GRID
@@ -871,8 +926,10 @@
                 card.setAttribute('data-aos-delay', index * 100);
                 card.onclick = () => openProjectDetail(p.id);
 
+                // Uses the FIRST image in the array for the grid thumbnail
+                // Fallback to stock placeholder if uploaded image is missing
                 card.innerHTML = `
-                    <img src="${p.image}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-70 group-hover:opacity-100" alt="${p.title}">
+                    <img src="${p.images[0]}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-70 group-hover:opacity-100" alt="${p.title}" onerror="this.onerror=null; this.src='https://placehold.co/800x800/1e293b/FFF?text=Upload+${p.images[0]}';">
                     <div class="absolute inset-0 border-2 border-transparent group-hover:border-brand-accent transition-all duration-300 m-4 pointer-events-none"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
                         <span class="text-brand-accent font-bold uppercase text-xs tracking-wider mb-1 block">${p.client}</span>
@@ -892,25 +949,69 @@
             btn.classList.add('bg-brand-accent', 'text-white', 'border-transparent');
         }
 
+        /* -----------------------------------------------------------------------
+           PROJECT MODAL & SLIDER LOGIC
+        ----------------------------------------------------------------------- */
+        function updateProjectModalImage() {
+            const data = projectsData.find(p => p.id === currentProjectId);
+            if(!data || !data.images) return;
+            
+            const img = document.getElementById('proj-modal-img');
+            const counter = document.getElementById('proj-modal-counter');
+            
+            // Briefly fade out image for smooth transition
+            img.style.opacity = 0;
+            
+            setTimeout(() => {
+                img.src = data.images[currentImageIndex];
+                // Update Counter text
+                counter.innerText = `${currentImageIndex + 1} / ${data.images.length}`;
+                img.style.opacity = 1;
+            }, 150); // slight delay to allow fade out
+        }
+
+        function prevProjectImage(e) {
+            e.stopPropagation(); // Stops the modal from closing when clicking arrows
+            const data = projectsData.find(p => p.id === currentProjectId);
+            if(!data) return;
+            // Loop back to the end if we hit the beginning
+            currentImageIndex = (currentImageIndex - 1 + data.images.length) % data.images.length;
+            updateProjectModalImage();
+        }
+
+        function nextProjectImage(e) {
+            e.stopPropagation();
+            const data = projectsData.find(p => p.id === currentProjectId);
+            if(!data) return;
+            // Loop to the beginning if we hit the end
+            currentImageIndex = (currentImageIndex + 1) % data.images.length;
+            updateProjectModalImage();
+        }
+
         function openProjectDetail(id) {
             const data = projectsData.find(p => p.id === id);
             if(!data) return;
 
+            // Set current project and reset slider to first image
+            currentProjectId = id;
+            currentImageIndex = 0;
+
             const modal = document.getElementById('project-modal');
             const title = document.getElementById('proj-modal-title');
-            const img = document.getElementById('proj-modal-img');
             const loc = document.getElementById('proj-modal-loc');
             const client = document.getElementById('proj-modal-client');
             const year = document.getElementById('proj-modal-year');
+            const scope = document.getElementById('proj-modal-scope');
             const desc = document.getElementById('proj-modal-desc');
             const tags = document.getElementById('proj-modal-tags');
 
+            // Load textual data
             if(title) title.innerText = data.title;
-            if(img) img.src = data.image;
             if(loc) loc.querySelector('span').innerText = data.location;
             if(client) client.innerText = data.client;
             if(year) year.innerText = data.year;
-            if(desc) desc.innerText = data.description;
+            if(scope) scope.innerText = data.scope;
+            if(desc) desc.innerHTML = data.description;
 
             if(tags) {
                 tags.innerHTML = '';
@@ -922,6 +1023,10 @@
                 });
             }
 
+            // Load initial image into slider
+            updateProjectModalImage();
+
+            // Show Modal
             modal.classList.remove('hidden');
             document.body.classList.add('modal-active');
             setTimeout(() => {
