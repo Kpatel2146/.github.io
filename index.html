@@ -82,6 +82,25 @@
             position: relative;
         }
         
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            display: flex;
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .marquee-wrapper {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
         /* Modal Animation */
         #service-modal-content, #project-modal-content, #about-modal-content {
             transform: translateY(20px);
@@ -105,8 +124,7 @@
                 <span class="flex items-center gap-2 text-gray-500"><i class="ph-fill ph-clock text-brand-accent"></i> Mon - Fri: 8:00 AM - 5:00 PM</span>
             </div>
             <div class="flex space-x-4">
-                <a href="#" class="hover:text-brand-accent transition"><i class="ph-fill ph-linkedin-logo text-lg"></i></a>
-                <a href="#" class="hover:text-brand-accent transition"><i class="ph-fill ph-facebook-logo text-lg"></i></a>
+                <a href="https://www.linkedin.com/company/nehal-contracting-inc/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="hover:text-brand-accent transition"><i class="ph-fill ph-linkedin-logo text-lg"></i></a>
             </div>
         </div>
     </div>
@@ -114,13 +132,13 @@
     <!-- NAVIGATION BAR -->
     <nav class="bg-brand-dark text-white sticky top-0 z-50 shadow-2xl border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-24 items-center">
+            <div class="flex justify-between h-32 items-center">
                 <!-- LOGO AREA -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="logo.png" 
-                         alt="Nehal Contracting Inc." 
-                         class="h-16 w-auto object-contain bg-white/10 p-1 rounded transition-transform duration-300 group-hover:scale-105"
-                         onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';"> 
+                    <img src="logo.png"
+                         alt="Nehal Contracting Inc."
+                         class="h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_8px_rgba(59,130,246,0.3)]"
+                         onerror="this.onerror=null; this.src='https://placehold.co/250x100/0b1120/FFF?text=NEHAL+LOGO';">
                 </a>
                 
                 <!-- Desktop Menu -->
@@ -160,9 +178,9 @@
     <!-- HERO SECTION - STATIC IMAGE -->
     <section id="home" class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-dark">
         <!-- Stock Background Image Restored -->
-        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
-             class="absolute inset-0 w-full h-full object-cover opacity-50" 
-             alt="Modern Construction Site">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+             class="absolute inset-0 w-full h-full object-cover opacity-40"
+             alt="Construction workers on active job site">
         
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-hero-gradient z-10"></div>
@@ -170,7 +188,7 @@
         <div class="relative z-20 text-center px-4 max-w-6xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
             <!-- Badge -->
             <div class="inline-flex items-center gap-2 border border-brand-accent/50 bg-brand-dark/50 backdrop-blur-md px-6 py-2 rounded-sm text-xs font-bold tracking-[0.2em] mb-6 uppercase text-brand-accent cursor-default">
-                <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span> Agency & Public Works
+                <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span> NYC's Premier MBE General Contractor
             </div>
             
             <!-- Company Name (Main Attraction) -->
@@ -181,12 +199,12 @@
             
             <!-- Tagline -->
             <h2 class="text-xl md:text-3xl font-light text-gray-300 mb-10 tracking-wide uppercase">
-                General Construction & Management
+                Restoring the Past, Building the Future
             </h2>
 
             <!-- Description -->
             <p class="text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed border-t border-gray-700 pt-8">
-                The premier partner for government agencies, educational institutions, and public infrastructure projects across the Tri-State area.
+                25+ years delivering public infrastructure, school renovations, and landmark restorations across the Tri-State area.
             </p>
             
             <!-- Buttons -->
@@ -195,7 +213,7 @@
                     Partner With Us
                 </a>
                 <a href="#projects" class="px-12 py-4 border border-white/30 bg-white/5 backdrop-blur-sm text-white font-bold rounded-sm hover:bg-white hover:text-brand-dark transition-all duration-300 uppercase tracking-wider text-sm">
-                    View Portfolio
+                    Explore Our Work
                 </a>
             </div>
         </div>
@@ -215,13 +233,13 @@
                         <h3 class="text-brand-text font-bold uppercase tracking-widest text-xs">Who We Are</h3>
                     </div>
                     <h2 class="text-4xl md:text-6xl font-header font-bold text-brand-dark mb-8 leading-none">
-                        CONSTRUCTING <br>EXCELLENCE.
+                        WHERE LEGACY<br>MEETS INNOVATION.
                     </h2>
                     <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                        Nehal Contracting Inc. is a leading general contracting firm committed to providing exceptional services for public agencies. Since 2000, we have partnered with clients to build environmentally sound and secure projects.
+                        Since 2000, Nehal Contracting has been the contractor agencies trust with their most complex projects. We don't just build — we solve problems other firms walk away from.
                     </p>
                     <p class="text-gray-600 mb-10 leading-relaxed">
-                        We specialize in challenging environments, from historical landmarks to active school buildings, ensuring minimal disruption while delivering maximum value.
+                        From restoring century-old landmarks to modernizing active school buildings with zero disruption, we bring precision, safety, and accountability to every job site across the Tri-State area.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-6 mb-8">
@@ -252,9 +270,9 @@
                 </div>
                 <div class="relative" data-aos="fade-left">
                     <!-- Stock Image Restored -->
-                    <img src="https://images.unsplash.com/photo-1541976544351-e48770f39285?q=80&w=2070" 
-                         class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural" 
-                         alt="Construction Architecture">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2070&auto=format&fit=crop"
+                         class="w-full h-[600px] object-cover grayscale contrast-125 hover:grayscale-0 transition duration-700 shadow-architectural"
+                         alt="Construction renovation in progress">
                     <div class="absolute -bottom-10 -left-10 bg-brand-accent p-10 hidden md:block text-white">
                         <p class="font-header text-4xl font-bold">25+</p>
                         <p class="text-sm uppercase tracking-widest">Years Experience</p>
@@ -268,20 +286,20 @@
     <div class="bg-brand-dark text-white py-16">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <div data-aos="fade-up" data-aos-delay="0">
-                <div class="text-5xl font-header font-bold text-brand-accent mb-2">2000</div>
-                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Established</div>
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">$300M+</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Project Work Completed</div>
             </div>
             <div data-aos="fade-up" data-aos-delay="100">
                 <div class="text-5xl font-header font-bold text-brand-accent mb-2">130+</div>
-                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Projects</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Projects Delivered</div>
             </div>
             <div data-aos="fade-up" data-aos-delay="200">
-                <div class="text-5xl font-header font-bold text-brand-accent mb-2">100%</div>
-                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Compliance</div>
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">$100M+</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Bonding Capacity</div>
             </div>
             <div data-aos="fade-up" data-aos-delay="300">
-                <div class="text-5xl font-header font-bold text-brand-accent mb-2">NY/NJ</div>
-                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Service Area</div>
+                <div class="text-5xl font-header font-bold text-brand-accent mb-2">100%</div>
+                <div class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Compliance Rate</div>
             </div>
         </div>
     </div>
@@ -290,9 +308,9 @@
     <section id="services" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20" data-aos="fade-up">
-                <h3 class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3">Our Capabilities</h3>
-                <h2 class="text-4xl md:text-5xl font-header font-bold text-brand-dark">COMPREHENSIVE SERVICES</h2>
-                <p class="text-gray-500 mt-4 text-sm">Click on any service below to learn more about our expertise.</p>
+                <h3 class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3">Scope of Work</h3>
+                <h2 class="text-4xl md:text-5xl font-header font-bold text-brand-dark">WHAT WE DO</h2>
+                <p class="text-gray-500 mt-4 text-sm">From ground-up construction to complex renovations — we deliver on every front.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -301,7 +319,7 @@
                     <i class="ph-fill ph-buildings text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">General Contracting &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        End-to-end management for new builds and major renovations. We handle logistics, labor, and execution.
+                        Full-scope general contracting from pre-construction through closeout. We manage every trade, every deadline, every dollar.
                     </p>
                 </div>
 
@@ -310,7 +328,7 @@
                     <i class="ph-fill ph-graduation-cap text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Schools & Universities &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        Specialized renovations for PS schools and universities. Tight schedules and strict safety requirements.
+                        Decades of SCA and DASNY experience renovating NYC public schools and university facilities — on time, on budget, zero disruption to students.
                     </p>
                 </div>
 
@@ -319,7 +337,7 @@
                     <i class="ph-fill ph-bank text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Government Works &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        Expert handling of city, state, and federal projects. Historical landmarks and public infrastructure.
+                        Trusted by DDC, DASNY, and MTA for the city's most demanding public works — from landmark restorations to critical infrastructure upgrades.
                     </p>
                 </div>
 
@@ -328,7 +346,7 @@
                     <i class="ph-fill ph-paint-roller text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Renovations &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        Interior fit-outs, exterior masonry, roofing, and structural reinforcement for existing buildings.
+                        Interior fit-outs, exterior masonry, roofing, structural reinforcement, and electrification — breathing new life into aging infrastructure.
                     </p>
                 </div>
 
@@ -337,7 +355,7 @@
                     <i class="ph-fill ph-shield-check text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Safety & Compliance &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        Safety is our #1 core value. Fully trained on OSHA standards to prevent hazards on every site.
+                        Safety isn't a checkbox — it's our culture. Full OSHA compliance, daily toolbox talks, and zero tolerance for shortcuts.
                     </p>
                 </div>
 
@@ -346,7 +364,7 @@
                     <i class="ph-fill ph-users-three text-4xl text-gray-300 group-hover:text-brand-accent transition-colors mb-6"></i>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 group-hover:text-brand-accent transition">Project Management &rarr;</h3>
                     <p class="text-gray-500 leading-relaxed text-sm">
-                        Advanced planning to keep projects on time and within budget through transparent communication.
+                        Direct coordination with CMs and agencies, full subcontractor oversight, and real-time reporting that keeps every stakeholder aligned.
                     </p>
                 </div>
             </div>
@@ -361,53 +379,74 @@
                 <h2 class="text-3xl md:text-4xl font-header font-bold text-brand-dark mt-2">TRUSTED AGENCY PARTNERS</h2>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- NYCSCA -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="0">
-                    <img src="client-nycsca.png" alt="NYCSCA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">NYCSCA</span>
-                </div>
-                
-                <!-- DDC -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="50">
-                    <img src="client-ddc.png" alt="NYC DDC" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">DDC</span>
-                </div>
-                
-                <!-- MTA -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="100">
-                    <img src="client-mta.png" alt="MTA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">MTA</span>
-                </div>
-                
-                <!-- DASNY -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="150">
-                    <img src="client-dasny.png" alt="DASNY" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">DASNY</span>
-                </div>
-                
-                <!-- LiRo -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="200">
-                    <img src="client-liro.png" alt="LiRo Group" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">LiRo</span>
-                </div>
-                
-                <!-- NYCHA -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="250">
-                    <img src="client-nycha.png" alt="NYCHA" class="h-20 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">NYCHA</span>
-                </div>
-
-                <!-- TDX Construction -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="300">
-                    <img src="client-tdx.png" alt="TDX Construction" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">TDX</span>
-                </div>
-
-                <!-- Skanska -->
-                <div class="agency-logo-box bg-white" data-aos="fade-up" data-aos-delay="350">
-                    <img src="client-skanska.png" alt="Skanska" class="h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="agency-text hidden">SKANSKA</span>
+            <div class="marquee-wrapper" data-aos="fade-up">
+                <div class="marquee-track">
+                    <!-- First set -->
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-nycsca.png" alt="NYCSCA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">NYCSCA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-ddc.png" alt="NYC DDC" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">DDC</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-mta.png" alt="MTA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">MTA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-dasny.png" alt="DASNY" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">DASNY</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-liro.png" alt="LiRo Group" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">LiRo</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-nycha.png" alt="NYCHA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">NYCHA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-tdx.png" alt="TDX Construction" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">TDX</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-skanska.png" alt="Skanska" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">SKANSKA</span>
+                    </div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-nycsca.png" alt="NYCSCA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">NYCSCA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-ddc.png" alt="NYC DDC" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">DDC</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-mta.png" alt="MTA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">MTA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-dasny.png" alt="DASNY" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">DASNY</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-liro.png" alt="LiRo Group" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">LiRo</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-nycha.png" alt="NYCHA" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">NYCHA</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-tdx.png" alt="TDX Construction" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">TDX</span>
+                    </div>
+                    <div class="agency-logo-box mx-4 min-w-[200px] rounded-lg">
+                        <img src="client-skanska.png" alt="Skanska" class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="agency-text hidden font-header font-bold text-xl text-gray-400">SKANSKA</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -451,12 +490,14 @@
                         BUILD YOUR CAREER.
                     </h2>
                     <p class="text-gray-600 mb-8 leading-relaxed">
-                        We are constantly growing and looking for dedicated professionals. If you are passionate about quality construction and safety, we want to hear from you.
+                        We're building more than structures — we're building careers. Join a team that works on some of the most iconic public infrastructure projects in New York City.
                     </p>
                     <ul class="space-y-4 text-brand-dark mb-10 font-bold">
                         <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Competitive Salary</li>
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Health & Benefits Package</li>
                         <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> OSHA Safety Training</li>
-                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Diverse Project Portfolio</li>
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Work on Iconic NYC Projects</li>
+                        <li class="flex items-center gap-4"><i class="ph-fill ph-check text-brand-accent text-xl"></i> Growth & Advancement Opportunities</li>
                     </ul>
                 </div>
                 
@@ -464,7 +505,7 @@
                 <div class="bg-gray-50 p-10 shadow-architectural border-t-4 border-brand-accent" data-aos="fade-left">
                     <h4 class="text-2xl font-header font-bold text-brand-dark mb-8">Submit Application</h4>
                     
-                    <form action="https://formspree.io/f/xbdjzjlo" method="POST" enctype="multipart/form-data">
+                    <form action="mailto:info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_subject" value="New Job Application from Nehal Website" />
                         
                         <div class="space-y-6">
@@ -565,7 +606,7 @@
                 <div class="bg-white p-10 shadow-architectural">
                     <h3 class="text-2xl font-header font-bold text-brand-dark mb-8">Send an Inquiry</h3>
                     
-                    <form action="https://formspree.io/f/xbdjzjlo" method="POST">
+                    <form action="mailto:info@nehalcontracting.com" method="POST" enctype="text/plain">
                         <input type="hidden" name="_subject" value="New Inquiry from Nehal Website" />
 
                         <div class="grid grid-cols-2 gap-6 mb-6">
@@ -601,20 +642,62 @@
 
     <!-- FOOTER -->
     <footer class="bg-brand-dark text-white border-t border-gray-900 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex justify-center items-center gap-3 mb-8">
-                 <!-- Logo in Footer -->
-                <img src="logo.png" 
-                     alt="Nehal Contracting Inc." 
-                     class="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity"
-                     onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';">
-                <span class="font-header text-xl font-bold uppercase tracking-widest">Nehal Contracting</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Column 1: Logo & Description -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="logo.png"
+                             alt="Nehal Contracting Inc."
+                             class="h-14 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                             onerror="this.onerror=null; this.src='https://placehold.co/200x80/0b1120/FFF?text=NEHAL+LOGO';">
+                        <span class="font-header text-lg font-bold uppercase tracking-widest">Nehal Contracting</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Restoring the past, building the future. NYC's premier MBE general contractor since 2000.
+                    </p>
+                    <a href="https://www.linkedin.com/company/nehal-contracting-inc/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-brand-accent transition mt-4">
+                        <i class="ph-fill ph-linkedin-logo text-xl"></i> <span class="text-sm">Follow us</span>
+                    </a>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="font-header font-bold uppercase tracking-widest text-sm mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#home" class="hover:text-brand-accent transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-accent transition">About Us</a></li>
+                        <li><a href="#services" class="hover:text-brand-accent transition">Services</a></li>
+                        <li><a href="#projects" class="hover:text-brand-accent transition">Projects</a></li>
+                        <li><a href="#careers" class="hover:text-brand-accent transition">Careers</a></li>
+                        <li><a href="#contact" class="hover:text-brand-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div>
+                    <h4 class="font-header font-bold uppercase tracking-widest text-sm mb-6">Headquarters</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <i class="ph-fill ph-map-pin text-brand-accent mt-0.5"></i>
+                            152 Airport Executive Park<br>Nanuet, New York 10954
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph-fill ph-phone text-brand-accent"></i>
+                            (845) 517-0711
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph-fill ph-envelope-simple text-brand-accent"></i>
+                            info@nehalcontracting.com
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p class="mb-8 max-w-lg mx-auto text-sm text-gray-500">
-                Serving the Tri-State area with integrity and excellence since 2000.
-            </p>
-            <div class="text-xs text-gray-600 border-t border-gray-900 pt-8">
-                &copy; <script>document.write(new Date().getFullYear())</script> Nehal Contracting Inc. All rights reserved.
+
+            <!-- Bottom Bar -->
+            <div class="text-xs text-gray-600 border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <span>&copy; <script>document.write(new Date().getFullYear())</script> Nehal Contracting Inc. All rights reserved.</span>
+                <span>MBE Certified | NY State & NYC</span>
             </div>
         </div>
     </footer>
@@ -1050,39 +1133,39 @@
         const serviceData = {
             gc: {
                 title: "General Contracting",
-                desc: "As your single point of responsibility, Nehal Contracting manages every aspect of construction from ground-breaking to occupancy. We coordinate all subcontractors, manage logistics, and ensure quality control, delivering turnkey solutions for commercial and public sector clients.",
+                desc: "Nehal Contracting is your single point of accountability. From pre-construction planning through final punch list, we take full ownership of your project — coordinating every subcontractor, managing every trade, and driving every milestone so you never have to chase updates.",
                 image: "https://images.unsplash.com/photo-1590644365607-1c5a38fc6fb9?q=80&w=1000",
-                features: ["Full-service project management and site supervision.", "Coordination of all trades (MEP, Structural, Finish).", "Schedule optimization and critical path management.", "Quality assurance and punch-list execution."]
+                features: ["Complete project ownership from mobilization to closeout.", "Coordination of all trades — MEP, structural, and finish.", "Critical path scheduling and proactive delay mitigation.", "Rigorous quality control and zero-deficiency punch lists."]
             },
             schools: {
                 title: "Schools & Universities",
-                desc: "We understand the unique constraints of working in educational environments. From tight summer deadlines to occupied building safety protocols, we have successfully renovated dozens of schools for the NYCSCA and private universities.",
+                desc: "We've renovated dozens of NYC public schools for the SCA and DASNY — and we know exactly what it takes. Occupied buildings, summer blitz deadlines, Wicks Law compliance, and strict DOE safety protocols are our daily operating environment, not occasional challenges.",
                 image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000",
-                features: ["NYCSCA and University compliance expertise.", "Strict safety protocols for occupied campuses.", "Summer blitz schedule management.", "Auditorium, gymnasium, and classroom modernization."]
+                features: ["Deep NYCSCA and DASNY compliance expertise.", "Occupied-building protocols that keep students and staff safe.", "Aggressive summer schedule execution with zero overruns.", "Gymnasium, auditorium, cafeteria, and classroom modernization."]
             },
             gov: {
                 title: "Government Works",
-                desc: "Trusted by agencies like DDC, DASNY, and MTA, we navigate the complexities of public sector contracting. We specialize in secure facilities, landmark restorations, and infrastructure upgrades requiring high-level security clearance and regulatory adherence.",
+                desc: "DDC, DASNY, MTA — we've earned the trust of New York's toughest agencies by delivering on the most complex public works projects in the city. Historic landmarks, secure facilities, and critical infrastructure demand precision and full regulatory mastery. That's where we thrive.",
                 image: "https://images.unsplash.com/photo-1555529902-5261145633bf?q=80&w=1000",
-                features: ["Secure facility construction and renovation.", "Historical landmark preservation and restoration.", "Public infrastructure and utility upgrades.", "Strict adherence to municipal and federal codes."]
+                features: ["Proven track record with DDC, DASNY, MTA, and NYCHA.", "Landmark and historic preservation expertise.", "Full municipal, state, and federal code compliance.", "Public infrastructure and utility system upgrades."]
             },
             reno: {
                 title: "Renovations",
-                desc: "We revitalize aging infrastructure to meet modern standards. Whether it's a structural update, a complete interior gut renovation, or exterior facade restoration, our team ensures the longevity and functionality of your building assets.",
+                desc: "We transform aging buildings into modern, code-compliant facilities. Whether it's a full gut renovation, exterior facade restoration, or a building-wide electrification upgrade, our team delivers work that extends the life of your assets for decades to come.",
                 image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000",
-                features: ["Complete interior fit-outs and reconfiguration.", "Exterior masonry restoration and waterproofing.", "Structural reinforcement and steel modification.", "MEP systems modernization."]
+                features: ["Complete interior fit-outs and space reconfiguration.", "Exterior masonry restoration, waterproofing, and roofing.", "Structural reinforcement and steel modification.", "Building electrification and MEP systems modernization."]
             },
             safety: {
                 title: "Safety & Compliance",
-                desc: "Safety is not just a requirement; it is our culture. Nehal Contracting maintains a rigorous safety program. Our site safety managers are OSHA-certified and dedicated to preventing accidents through proactive planning and daily inspections.",
+                desc: "At Nehal, safety is a non-negotiable part of who we are. Every project starts with a custom Site Safety Plan. Every supervisor holds 62-Hour SST certification. Every morning begins with a toolbox talk. We don't just meet OSHA standards — we exceed them.",
                 image: "https://images.unsplash.com/photo-1508454648301-7c3046ff6d2d?q=80&w=1000",
-                features: ["Comprehensive Site Safety Plans (SSP).", "Daily toolbox talks and hazard analysis.", "Full 62-Hour SST compliance for all supervisors.", "COVID-19 and environmental safety protocols."]
+                features: ["Custom Site Safety Plans (SSP) for every project.", "Daily toolbox talks and real-time hazard analysis.", "Full 62-Hour SST certification for all site supervisors.", "Environmental safety and air quality monitoring protocols."]
             },
             pm: {
                 title: "Project Management",
-                desc: "Successful projects start with planning. Our project managers utilize industry-leading software and methodologies to control costs, track progress, and communicate transparently with stakeholders throughout the project lifecycle.",
+                desc: "Our project managers don't just track schedules — they run the show. From direct agency coordination to hands-on subcontractor oversight, we maintain full control of scope, cost, and timeline. Every stakeholder stays informed through transparent, real-time reporting.",
                 image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000",
-                features: ["Detailed budget estimation and cost control.", "CPM scheduling and timeline tracking.", "Submittal and RFI management.", "Transparent reporting and stakeholder communication."]
+                features: ["Direct coordination with CMs and agency representatives.", "Full subcontractor procurement, oversight, and accountability.", "CPM scheduling with proactive milestone tracking.", "Submittal, RFI, and change order management."]
             }
         };
 
