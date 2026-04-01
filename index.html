@@ -509,7 +509,7 @@
                     
                     <form id="career-form" action="https://formsubmit.co/info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_subject" value="New Job Application — Nehal Website" />
-                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_captcha" value="true" />
                         <input type="hidden" name="_template" value="table" />
                         <input type="hidden" name="_next" value="https://www.nehalcontracting.com#careers" />
                         <input type="text" name="_honey" style="display:none" />
@@ -541,7 +541,7 @@
                                     <label id="career-upload-label" class="flex flex-col w-full h-24 border-2 border-gray-300 border-dashed hover:bg-white hover:border-brand-accent transition cursor-pointer justify-center items-center">
                                         <i class="ph ph-upload-simple text-2xl text-gray-400"></i>
                                         <span id="career-file-name" class="text-xs text-gray-400 mt-2">Upload PDF, Word, or Excel (max 10MB)</span>
-                                        <input type="file" name="attachment" class="opacity-0 w-0 h-0" accept=".pdf,.doc,.docx,.xls,.xlsx" onchange="document.getElementById('career-file-name').textContent = this.files[0] ? this.files[0].name : 'Upload PDF, Word, or Excel (max 10MB)'" />
+                                        <input type="file" name="attachment" class="opacity-0 w-0 h-0" accept=".pdf,.doc,.docx,.xls,.xlsx" />
                                     </label>
                                 </div>
                             </div>
@@ -614,7 +614,7 @@
                     
                     <form id="contact-form" action="https://formsubmit.co/info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_subject" value="New Inquiry — Nehal Website" />
-                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_captcha" value="true" />
                         <input type="hidden" name="_template" value="table" />
                         <input type="hidden" name="_next" value="https://www.nehalcontracting.com#contact" />
                         <input type="text" name="_honey" style="display:none" />
@@ -1310,6 +1310,64 @@
         // Initialize things on load
         document.addEventListener('DOMContentLoaded', () => {
             renderProjects('all');
+
+            // ── FORM SECURITY: file validation + submission guard ──
+            const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx', '.xls', '.xlsx'];
+            const ALLOWED_MIMES = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ];
+            const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+            function validateFile(fileInput) {
+                if (!fileInput || !fileInput.files || fileInput.files.length === 0) return true; // no file is ok
+                const file = fileInput.files[0];
+                const ext = '.' + file.name.split('.').pop().toLowerCase();
+                if (!ALLOWED_EXTENSIONS.includes(ext)) {
+                    alert('Only PDF, Word (.doc/.docx), and Excel (.xls/.xlsx) files are allowed.');
+                    fileInput.value = '';
+                    document.getElementById('career-file-name').textContent = 'Upload PDF, Word, or Excel (max 10MB)';
+                    return false;
+                }
+                if (file.type && !ALLOWED_MIMES.includes(file.type)) {
+                    alert('This file type is not permitted. Please upload a PDF, Word, or Excel document.');
+                    fileInput.value = '';
+                    document.getElementById('career-file-name').textContent = 'Upload PDF, Word, or Excel (max 10MB)';
+                    return false;
+                }
+                if (file.size > MAX_FILE_SIZE) {
+                    alert('File is too large. Maximum size is 10 MB.');
+                    fileInput.value = '';
+                    document.getElementById('career-file-name').textContent = 'Upload PDF, Word, or Excel (max 10MB)';
+                    return false;
+                }
+                return true;
+            }
+
+            // Validate on file selection
+            const careerFileInput = document.querySelector('#career-form input[name="attachment"]');
+            if (careerFileInput) {
+                careerFileInput.addEventListener('change', function() {
+                    if (validateFile(this)) {
+                        document.getElementById('career-file-name').textContent = this.files[0] ? this.files[0].name : 'Upload PDF, Word, or Excel (max 10MB)';
+                    }
+                });
+            }
+
+            // Validate again on form submit (in case someone bypasses the change event)
+            const careerForm = document.getElementById('career-form');
+            if (careerForm) {
+                careerForm.addEventListener('submit', function(e) {
+                    const fileInput = this.querySelector('input[name="attachment"]');
+                    if (!validateFile(fileInput)) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+            }
             const aboutContent = document.getElementById('about-modal-content');
             if(aboutContent) {
                 aboutContent.style.transition = 'all 0.3s ease-out';
