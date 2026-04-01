@@ -1139,37 +1139,37 @@
             gc: {
                 title: "General Contracting",
                 desc: "Nehal Contracting is your single point of accountability. From pre-construction planning through final punch list, we take full ownership of your project — coordinating every subcontractor, managing every trade, and driving every milestone so you never have to chase updates.",
-                image: "https://images.unsplash.com/photo-1590644365607-1c5a38fc6fb9?q=80&w=1000",
+                image: "service-gc.jpg",
                 features: ["Complete project ownership from mobilization to closeout.", "Coordination of all trades — MEP, structural, and finish.", "Critical path scheduling and proactive delay mitigation.", "Rigorous quality control and zero-deficiency punch lists."]
             },
             schools: {
                 title: "Schools & Universities",
                 desc: "We've renovated dozens of NYC public schools for the SCA and DASNY — and we know exactly what it takes. Occupied buildings, summer blitz deadlines, Wicks Law compliance, and strict DOE safety protocols are our daily operating environment, not occasional challenges.",
-                image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000",
+                image: "service-schools.jpg",
                 features: ["Deep NYCSCA and DASNY compliance expertise.", "Occupied-building protocols that keep students and staff safe.", "Aggressive summer schedule execution with zero overruns.", "Gymnasium, auditorium, cafeteria, and classroom modernization."]
             },
             gov: {
                 title: "Government Works",
                 desc: "DDC, DASNY, MTA — we've earned the trust of New York's toughest agencies by delivering on the most complex public works projects in the city. Historic landmarks, secure facilities, and critical infrastructure demand precision and full regulatory mastery. That's where we thrive.",
-                image: "https://images.unsplash.com/photo-1555529902-5261145633bf?q=80&w=1000",
+                image: "service-gov.jpg",
                 features: ["Proven track record with DDC, DASNY, MTA, and NYCHA.", "Landmark and historic preservation expertise.", "Full municipal, state, and federal code compliance.", "Public infrastructure and utility system upgrades."]
             },
             reno: {
                 title: "Renovations",
                 desc: "We transform aging buildings into modern, code-compliant facilities. Whether it's a full gut renovation, exterior facade restoration, or a building-wide electrification upgrade, our team delivers work that extends the life of your assets for decades to come.",
-                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000",
+                image: "service-reno.jpg",
                 features: ["Complete interior fit-outs and space reconfiguration.", "Exterior masonry restoration, waterproofing, and roofing.", "Structural reinforcement and steel modification.", "Building electrification and MEP systems modernization."]
             },
             safety: {
                 title: "Safety & Compliance",
                 desc: "At Nehal, safety is a non-negotiable part of who we are. Every project starts with a custom Site Safety Plan. Every supervisor holds 62-Hour SST certification. Every morning begins with a toolbox talk. We don't just meet OSHA standards — we exceed them.",
-                image: "https://images.unsplash.com/photo-1508454648301-7c3046ff6d2d?q=80&w=1000",
+                image: "service-safety.jpg",
                 features: ["Custom Site Safety Plans (SSP) for every project.", "Daily toolbox talks and real-time hazard analysis.", "Full 62-Hour SST certification for all site supervisors.", "Environmental safety and air quality monitoring protocols."]
             },
             pm: {
                 title: "Project Management",
                 desc: "Our project managers don't just track schedules — they run the show. From direct agency coordination to hands-on subcontractor oversight, we maintain full control of scope, cost, and timeline. Every stakeholder stays informed through transparent, real-time reporting.",
-                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000",
+                image: "service-pm.jpg",
                 features: ["Direct coordination with CMs and agency representatives.", "Full subcontractor procurement, oversight, and accountability.", "CPM scheduling with proactive milestone tracking.", "Submittal, RFI, and change order management."]
             }
         };
@@ -1186,7 +1186,7 @@
 
             if(modalTitle) modalTitle.innerText = data.title;
             if(modalDesc) modalDesc.innerText = data.desc;
-            if(modalImg) modalImg.src = data.image;
+            if(modalImg) { modalImg.src = data.image; modalImg.onerror = function(){ this.onerror=null; this.src='https://placehold.co/800x500/1e293b/FFF?text=Upload+' + data.image; }; }
             
             if(modalList) {
                 modalList.innerHTML = '';
