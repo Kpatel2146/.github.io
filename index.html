@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nehal Contracting Inc. | General Construction & Management</title>
     
     <!-- Tailwind CSS -->
@@ -92,8 +92,10 @@
             animation: marquee 25s linear infinite;
             width: max-content;
         }
-        .marquee-track:hover {
-            animation-play-state: paused;
+        @media (hover: hover) {
+            .marquee-track:hover {
+                animation-play-state: paused;
+            }
         }
         .marquee-wrapper {
             overflow: hidden;
@@ -505,9 +507,13 @@
                 <div class="bg-gray-50 p-10 shadow-architectural border-t-4 border-brand-accent" data-aos="fade-left">
                     <h4 class="text-2xl font-header font-bold text-brand-dark mb-8">Submit Application</h4>
                     
-                    <form action="mailto:info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="_subject" value="New Job Application from Nehal Website" />
-                        
+                    <form id="career-form" action="https://formsubmit.co/info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_subject" value="New Job Application — Nehal Website" />
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_template" value="table" />
+                        <input type="hidden" name="_next" value="https://www.nehalcontracting.com#careers" />
+                        <input type="text" name="_honey" style="display:none" />
+
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Full Name</label>
@@ -530,12 +536,12 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Resume</label>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Resume / Documents</label>
                                 <div class="flex items-center justify-center w-full">
-                                    <label class="flex flex-col w-full h-24 border-2 border-gray-300 border-dashed hover:bg-white hover:border-brand-accent transition cursor-pointer justify-center items-center">
+                                    <label id="career-upload-label" class="flex flex-col w-full h-24 border-2 border-gray-300 border-dashed hover:bg-white hover:border-brand-accent transition cursor-pointer justify-center items-center">
                                         <i class="ph ph-upload-simple text-2xl text-gray-400"></i>
-                                        <span class="text-xs text-gray-400 mt-2">Upload PDF or Doc</span>
-                                        <input type="file" name="resume" class="opacity-0 w-0 h-0" accept=".pdf,.doc,.docx" />
+                                        <span id="career-file-name" class="text-xs text-gray-400 mt-2">Upload PDF, Word, or Excel (max 10MB)</span>
+                                        <input type="file" name="attachment" class="opacity-0 w-0 h-0" accept=".pdf,.doc,.docx,.xls,.xlsx" onchange="document.getElementById('career-file-name').textContent = this.files[0] ? this.files[0].name : 'Upload PDF, Word, or Excel (max 10MB)'" />
                                     </label>
                                 </div>
                             </div>
@@ -606,8 +612,12 @@
                 <div class="bg-white p-10 shadow-architectural">
                     <h3 class="text-2xl font-header font-bold text-brand-dark mb-8">Send an Inquiry</h3>
                     
-                    <form action="mailto:info@nehalcontracting.com" method="POST" enctype="text/plain">
-                        <input type="hidden" name="_subject" value="New Inquiry from Nehal Website" />
+                    <form id="contact-form" action="https://formsubmit.co/info@nehalcontracting.com" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_subject" value="New Inquiry — Nehal Website" />
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_template" value="table" />
+                        <input type="hidden" name="_next" value="https://www.nehalcontracting.com#contact" />
+                        <input type="text" name="_honey" style="display:none" />
 
                         <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
@@ -955,17 +965,21 @@
             },
             {
                 id: "p3",
-                category: ["gov", "reno"],
-                title: "Queens Museum",
+                category: ["school", "reno"],
+                title: "Richmond Hill High School — Auditorium Upgrade",
                 location: "Queens, NY",
-                client: "NYC DDC",
-                year: "2021",
-                scope: "Historic Restoration & MEP Upgrade",
+                client: "NYCSCA",
+                year: "2020",
+                scope: "Historic Auditorium Renovation",
                 images: [
-                    "queens-1.jpg",
-                    "queens-2.jpg"
+                    "rhhs-1.jpg",
+                    "rhhs-2.jpg",
+                    "rhhs-3.jpg",
+                    "rhhs-4.jpg",
+                    "rhhs-5.jpg",
+                    "rhhs-6.jpg"
                 ],
-                description: "Specialized restoration work for this cultural landmark. Project involved exterior masonry restoration, climate control system upgrades, and gallery space reconfiguration."
+                description: "A full renovation of Auditorium 'A' at Richmond Hill High School in Queens — a building flagged by the State Historic Preservation Office (SHPO) as potentially eligible for the National Register of Historic Places. The scope includes complete auditorium seating replacement, stage area reconstruction, balcony parapet and railing work, ceiling restoration, new projection systems, selective heating and HVAC modifications, sprinkler and fire protection upgrades, and a full electrical and lighting overhaul. Every finish, fixture, and material selection required review against SHPO preservation standards to maintain the historic character of the space.<br><br><strong class='text-brand-dark font-header text-xl'>Complexity and Coordination</strong><ul class='list-disc pl-5 mt-3 space-y-2 text-sm text-gray-600'><li><strong>Historic Preservation Compliance:</strong> All work executed under State Historic Preservation Office (SHPO) review, requiring material selections, finishes, and construction methods that preserve the building's historic character while meeting modern code requirements.</li><li><strong>Auditorium MEP Integration:</strong> New HVAC, sprinkler, electrical, and lighting systems installed within a large-volume historic assembly space — requiring concealed routing, coordination with existing structural conditions, and fire protection modifications without altering the original architectural details.</li><li><strong>ADA Accessibility Retrofit:</strong> Wheelchair-accessible seating, circulation paths, and code-compliant egress integrated into an existing historic auditorium layout with significant dimensional and structural constraints.</li></ul>"
             },
             {
                 id: "p4",
@@ -985,7 +999,7 @@
                     "ps189-7.jpg",
                     "ps189-8.jpg"
                 ],
-                description: "Extensive exterior and interior renovation. Delivered comprehensive roofing replacement, parapet reconstruction, and modernization of the school's main auditorium and gymnasium."
+                description: "A multi-phase SCA renovation of an occupied K–8 school in Brooklyn requiring simultaneous exterior envelope and interior systems work. The exterior scope included full roof replacement, parapet demolition and reconstruction, and masonry waterproofing — all executed with sidewalk sheds and pedestrian protection over active school entry points. Interior work delivered a complete modernization of the auditorium and gymnasium, including new flooring, stage systems, lighting, and acoustical treatments. The project demanded aggressive summer blitz scheduling for interior trades while exterior work continued through the school year, with strict SCA site safety protocols, daily coordination with school administration, and phased shutdowns that kept the building fully operational throughout."
             },
             {
                 id: "p5",
@@ -993,38 +1007,38 @@
                 title: "Brooklyn Supreme Court",
                 location: "Brooklyn, NY",
                 client: "NYC DDC",
-                year: "2023",
-                scope: "Historic Restoration & Renovation",
+                year: "In Progress",
+                scope: "Exterior Envelope Rehabilitation",
                 images: [
                     "bsc-1.jpg"
                 ],
-                description: "Restoration and renovation of the Brooklyn Supreme Court, a landmark civic building in downtown Brooklyn. Scope includes interior and exterior upgrades executed under strict historic preservation requirements and DDC oversight."
+                description: "An accelerated, multi-phase exterior envelope rehabilitation of one of Brooklyn's most prominent civic landmarks at 360 Adams Street. The scope covers the full building envelope — removal and reconstruction of brick masonry parapet walls with new coping stones, restoration of the facade's limestone, granite, and brick masonry surfaces, and replacement of all flashings, sealants, and waterproofing membranes down to the existing roof concrete deck. New multi-ply modified bitumen membrane roofing is installed to meet current NYC energy code requirements. Deteriorated structural steel framing, brackets, and connections at the facade and roof are repaired or replaced throughout. All stone, window, and metal panel surfaces across the building exterior are cleaned. The project operates on an accelerated phasing plan around an active courthouse — coordinating scaffold and protection systems, pedestrian safety, and construction access with court administration, NYPD security, and DDC construction management simultaneously."
             },
             {
                 id: "p6",
                 category: ["gov", "reno"],
-                title: "Brownsville Library",
+                title: "Brownsville Branch Library",
                 location: "Brooklyn, NY",
                 client: "NYC DDC",
-                year: "2023",
-                scope: "Renovation & Modernization",
+                year: "In Progress",
+                scope: "Interior Renovation & Second Floor Addition",
                 images: [
                     "bvl-1.jpg"
                 ],
-                description: "Comprehensive renovation and modernization of the Brownsville Library branch, including interior upgrades, MEP systems, and ADA accessibility improvements delivered under DDC contract."
+                description: "A DDC project that constructs an entirely new second floor and Community Room on top of a historic Brooklyn library — while preserving and restoring the original masonry structure beneath it. New steel columns and beams are notched directly into century-old load-bearing masonry walls to carry the structural load of the addition and a vegetated green roof above. The existing 1980s lightweight steel truss roof is demolished in its entirety. Two new cast-in-place concrete egress stairwells with terra cotta rainscreen cladding are built on the exterior, a hydraulic elevator is threaded into an existing shaft, and the full HVAC system is replaced. The project is held to LEED certification standards, requiring strict sustainability benchmarks across energy performance, materials selection, and indoor air quality throughout construction — all executed under concurrent DDC construction management and Landmarks Preservation Commission oversight."
             },
             {
                 id: "p7",
-                category: ["school"],
-                title: "Intermediate School 527K (IS 527K)",
+                category: ["school", "reno"],
+                title: "Adams Street Educational Campus — IS 527K",
                 location: "Brooklyn, NY",
                 client: "NYCSCA",
-                year: "2023",
-                scope: "School Renovation",
+                year: "In Progress",
+                scope: "Full Electrification & Heat Pump System",
                 images: [
                     "is527-1.jpg"
                 ],
-                description: "Full-scope renovation of IS 527K including classroom modernization, MEP upgrades, and interior buildout — delivered within SCA compliance standards and an occupied-building environment."
+                description: "A flagship project in the NYCSCA's electrification pilot program — a complete building-wide conversion from fossil fuel heating to a modern VRF heat pump system at the Adams Street Educational Campus. The scope requires full removal of all existing gas-fired equipment and installation of new electrical distribution infrastructure — switchgear, panels, feeders, transformers, and branch circuitry — sized to handle the significantly increased load that electrification demands. The building's fire alarm system is replaced end-to-end. All work is phased and executed within an active, occupied school campus, requiring temporary system tie-ins to maintain heat and life safety throughout construction, and continuous coordination with SCA construction management and school administration."
             }
         ];
 
@@ -1302,7 +1316,19 @@
                 aboutContent.style.transform = 'scale(0.95)';
                 aboutContent.style.opacity = '0';
             }
+
+            // Mobile marquee touch fix — pause on touch, resume on release
+            const marqueeTrack = document.querySelector('.marquee-track');
+            if(marqueeTrack) {
+                marqueeTrack.addEventListener('touchstart', () => {
+                    marqueeTrack.style.animationPlayState = 'paused';
+                }, {passive: true});
+                marqueeTrack.addEventListener('touchend', () => {
+                    marqueeTrack.style.animationPlayState = 'running';
+                }, {passive: true});
+            }
         });
+
 
     </script>
 </body>
